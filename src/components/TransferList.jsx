@@ -7,7 +7,7 @@ import Paper from '@material-ui/core/Paper';
 import {makeStyles} from '@material-ui/core/styles';
 import {getFitnessMenu, getUserId} from '../reducks/users/selectors';
 import {saveDayMenus, fetchDayMenus} from '../reducks/menus/operations';
-import {getOnedayMenu, getPartsId} from '../reducks/menus/selectors';
+import {getOnedayMenu} from '../reducks/menus/selectors';
 
 
 const useStyles = makeStyles(() => ({

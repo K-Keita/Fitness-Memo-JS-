@@ -8,9 +8,9 @@ import {saveMenus} from '../reducks/users/operations';
 
 const EditList = () => {  
   const [checked, setChecked] = useState([]),
-  [fitMemo, setFitMemo] = useState([]),
-  [value, setvalue] = useState(""),
-  [scrollLine, setScrollLine] = useState(false);
+        [fitMemo, setFitMemo] = useState([]),
+        [value, setvalue] = useState(""),
+        [scrollLine, setScrollLine] = useState(false);
 
   const dispatch = useDispatch();
   const selector = useSelector(state => state);
@@ -19,15 +19,13 @@ const EditList = () => {
   
   let id = window.location.pathname.split('/edit')[1];
   
-  if(id !== "") {
+  if (id !== "") {
     id = id.split('/')[1]
   } 
-  console.log(fitMenus[id])
 
   const selectItems = (checked.length === 0);
   const classes = selectItems ? "sign-box" : "sign-box m3-color";
   const isEmpty = (value === "") ? "b-position" : "b-position m3-color";
-
   
   const inputvalue = (event) => {
     setvalue(event.target.value);
@@ -55,7 +53,7 @@ const EditList = () => {
       const items = data.fitMenus[id];
       
       checked.map(value => {
-        items.splice(items.indexOf(value), 1);
+        return items.splice(items.indexOf(value), 1);
       })
 
       dispatch(saveMenus(uid, id, items))

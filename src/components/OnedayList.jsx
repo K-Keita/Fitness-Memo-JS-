@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {db} from '../firebase';
 import {ListPaper} from './index';
 import {getUserId} from '../reducks/users/selectors';
-import {getOnedayMenu} from '../reducks/menus/selectors';
 
 
 const OnedayList = (props) => {

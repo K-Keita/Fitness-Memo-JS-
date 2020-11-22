@@ -2,7 +2,6 @@ import React, {useCallback, useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {InputText, SecondButton, PartsButton} from '../components/UIkit/index';
 import {signUp} from '../reducks/users/operations';
-import {push} from 'connected-react-router';
 
 const SignUp = () => {
   const [username, setUsername] = useState(""),

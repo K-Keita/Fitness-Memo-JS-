@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react';
-import {LinkContainerTop} from '../components/index';
+import {LinkContainerTop} from '../components/UIkit/index';
 import {PartsButton} from './UIkit/index';
 
 const LinkContainer = (props) => {
   const [confirmArr, setConfirmArr] = useState('');
 
   const link = props.link;
+  const arr = props.arr;
+  
   const rows = [
     ({name: '肩',  link: `${link}/shoulder`}),
     ({name: '腕',  link: `${link}/arm`}),
@@ -14,7 +16,6 @@ const LinkContainer = (props) => {
     ({name: '脚',  link: `${link}/reg`}),
   ];
   
-  const arr = props.arr;
   useEffect(() => {
     setConfirmArr(arr);
   }, [])

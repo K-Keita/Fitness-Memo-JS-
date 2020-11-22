@@ -10,7 +10,7 @@ const EditMenuList = () => {
   return(
     <div className="container-width">
       <LinkContainer
-        flexLine={"l-flex"}
+        flexLine={"d-flex__left"}
         icons={<HomeOutlinedIcon fontSize="large" className="icons-align"/>}
         label={"Fitness-Memo"}
         link={"/"}

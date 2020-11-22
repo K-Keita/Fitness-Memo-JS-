@@ -1,6 +1,6 @@
 import React from 'react';
 import {withStyles, makeStyles} from '@material-ui/core/styles';
-import {TableField} from '../components/index';
+import {TableField} from '../components/UIkit/index';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';

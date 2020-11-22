@@ -2,9 +2,9 @@ import React, {useState, useEffect} from 'react';
 import {useSelector} from 'react-redux';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
-import {db} from '../firebase/index';
-import {getUserId} from '../reducks/users/selectors';
-import {getOnedayMenu, getPartsId} from '../reducks/menus/selectors';
+import {db} from '../../firebase/index';
+import {getUserId} from '../../reducks/users/selectors';
+import {getOnedayMenu, getPartsId} from '../../reducks/menus/selectors';
 
 const TableField = (props) => {
   const selector = useSelector(state => state);

@@ -1,5 +1,6 @@
 import React from 'react';
-import {LinkContainer, LinkContainerTop, OnedayList} from '../components/index';
+import {LinkContainer, OnedayList} from '../components/index';
+import {LinkContainerTop} from '../components/UIkit/index';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import EditIcon from '@material-ui/icons/Edit';
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';

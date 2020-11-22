@@ -24,13 +24,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Header = (props) => {
+const Header = () => {
   const classes = useStyles();
 
   const dispatch = useDispatch();
 
   return (
-    <div className={props.position}>
+    <div className="head-position">
       <div className={classes.root}>
         <AppBar position="static" className={classes.mainColor}>
           <Toolbar>

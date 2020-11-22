@@ -1,11 +1,9 @@
 import React, {useState, useCallback} from 'react';
 import {useDispatch} from 'react-redux';
-import {withRouter} from 'react-router-dom';
 import {InputText, SecondButton, PartsButton} from '../components/UIkit/index';
-import {auth} from '../firebase/index';
-import {push} from 'connected-react-router';
+import {resetPassword} from '../reducks/users/operations';
 
-const Reset = withRouter((props) => {
+const Reset = () => {
   const [email, setEmail] = useState('');
 
   const dispatch = useDispatch();
@@ -16,21 +14,6 @@ const Reset = withRouter((props) => {
   const inputEmail = useCallback((event) => {
     setEmail(event.target.value);
   },[setEmail])
-
-  const resetPassword = (email) => {
-    if(email === ''){
-      alert('必須項目が未入力です');
-      return false;
-    }else{
-      auth.sendPasswordResetEmail(email)
-          .then(() => {
-            alert('入力されたアドレスにパスワードリセット用のメールをお送りしました。')
-            props.history.push("/signin");
-          }).catch(() => {
-            alert('パスワードリセットに失敗しました。通信状況をご確認ください');
-          })
-    }
-  }
      
   return(
     <div className={"container-width"}>
@@ -47,6 +30,6 @@ const Reset = withRouter((props) => {
       </div>
     </div>
   )
-})
+}
 
 export default Reset;

@@ -3,7 +3,6 @@ import Divider from '@material-ui/core/Divider';
 import green from '@material-ui/core/colors/green';
 import {makeStyles} from '@material-ui/core';
 
-
 const useStyles = makeStyles({
   root: {
     marginBottom: 0,
