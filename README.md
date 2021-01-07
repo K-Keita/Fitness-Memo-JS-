@@ -1,4 +1,4 @@
-# My Task
+# Fitness-Memo
 1日のトレーニングメニューを記録できるアプリです。
 
 ## URL
