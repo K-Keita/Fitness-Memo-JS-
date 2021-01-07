@@ -1,11 +1,18 @@
-import React from 'react';
-import {Route, Switch} from 'react-router';
-import {RegistrationList, WeekLists, Home, EditMenuList, SignUp, SignIn, Reset} from './templates/index';
-import Auth from './Auth';
-
+import React from "react";
+import { Route, Switch } from "react-router";
+import {
+  RegistrationList,
+  WeekLists,
+  Home,
+  EditMenuList,
+  SignUp,
+  SignIn,
+  Reset,
+} from "./templates/index";
+import Auth from "./Auth";
 
 const Router = () => {
-  return(
+  return (
     <Switch>
       <Route exact path={"/reset"} component={Reset} />
       <Route exact path={"/signup"} component={SignUp} />
@@ -17,7 +24,7 @@ const Router = () => {
         <Route path={"/edit(/id)?"} component={EditMenuList} />
       </Auth>
     </Switch>
-  )
+  );
 };
 
 export default Router;

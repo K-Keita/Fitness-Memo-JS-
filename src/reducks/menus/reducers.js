@@ -1,8 +1,8 @@
-import * as Actions from './actions';
-import initialState from '../store/initialState';
+import * as Actions from "./actions";
+import initialState from "../store/initialState";
 
 export const MenuReducer = (state = initialState.menu, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case Actions.FETCH_DAYMENUS:
       return {
         ...state,
@@ -11,21 +11,21 @@ export const MenuReducer = (state = initialState.menu, action) => {
     case Actions.EMPTY_MENUS:
       return {
         ...state,
-        ...action.payload
-      }
+        ...action.payload,
+      };
     default:
-       return state
+      return state;
   }
-}
+};
 
 export const MenusReducer = (state = initialState.menus, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case Actions.FETCH_NEARMENUS:
       return {
         ...state,
-        list: [...action.payload]
-      }
+        list: [...action.payload],
+      };
     default:
-       return state
+      return state;
   }
-}
+};

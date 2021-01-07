@@ -4,16 +4,16 @@ const initialState = {
     role: "",
     uid: "",
     username: "",
-    fitMenus: {}
+    fitMenus: {},
   },
   menu: {
-    fitItems: [], 
+    fitItems: [],
     partsId: [],
     date: "",
   },
   menus: {
-    list: []
-  }
+    list: [],
+  },
 };
 
 export default initialState;

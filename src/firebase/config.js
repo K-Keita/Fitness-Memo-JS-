@@ -6,5 +6,5 @@ export const firebaseConfig = {
   storageBucket: "fitness-memo.appspot.com",
   messagingSenderId: "876724621241",
   appId: "1:876724621241:web:581163b65bab3c2016b068",
-  measurementId: "G-73LLKFTW9N"
+  measurementId: "G-73LLKFTW9N",
 };

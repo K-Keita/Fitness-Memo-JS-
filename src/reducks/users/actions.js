@@ -7,9 +7,9 @@ export const signInAction = (userState) => {
       role: userState.role,
       uid: userState.uid,
       username: userState.username,
-      fitMenus: userState.fitMenus
-    }
-  }
+      fitMenus: userState.fitMenus,
+    },
+  };
 };
 
 export const SIGN_OUT = "SIGN_OUT";
@@ -20,15 +20,15 @@ export const signOutAction = () => {
       isSignedIn: false,
       role: "",
       uid: "",
-      username: ""
-    }
-  }
+      username: "",
+    },
+  };
 };
 
 export const FETCH_USERS = "FETCH_USERS";
 export const fetchUsersAction = (data) => {
   return {
     type: "FETCH_USERS",
-    payload: data
-  }
+    payload: data,
+  };
 };

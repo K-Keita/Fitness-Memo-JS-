@@ -1,11 +1,11 @@
-import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import {green} from '@material-ui/core/colors';
-import {makeStyles} from '@material-ui/core/styles';
-import { useDispatch } from 'react-redux';
-import {signOut} from '../../reducks/users/operations';
+import React from "react";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import { green } from "@material-ui/core/colors";
+import { makeStyles } from "@material-ui/core/styles";
+import { useDispatch } from "react-redux";
+import { signOut } from "../../reducks/users/operations";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,10 +15,10 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   mainColor: {
-    backgroundColor: green['A400'],
+    backgroundColor: green["A400"],
   },
   icon: {
-    '& > svg': {
+    "& > svg": {
       margin: theme.spacing(2),
     },
   },
@@ -36,15 +36,17 @@ const Header = () => {
           <Toolbar>
             <div className={"midium-space"} />
             <Typography variant="h6" className={classes.title}>
-                Fitness-Memo
+              Fitness-Memo
             </Typography>
-            <div className="p-cursor" onClick={() => dispatch(signOut())}>ログアウト</div>
+            <div className="p-cursor" onClick={() => dispatch(signOut())}>
+              ログアウト
+            </div>
             <div className={"midium-space"} />
           </Toolbar>
         </AppBar>
       </div>
     </div>
   );
-}
+};
 
 export default Header;
