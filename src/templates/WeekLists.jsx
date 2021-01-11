@@ -1,13 +1,12 @@
 import React from "react";
-import { LinkContainer, OnedayList } from "../components/index";
-import { LinkContainerTop } from "../components/UIkit/index";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import EditIcon from "@material-ui/icons/Edit";
 import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
 import ListAltIcon from "@material-ui/icons/ListAlt";
+import { LinkContainer, OnedayList } from "../components/index";
+import { LinkContainerTop } from "../components/UIkit/index";
 
 const d = new Date();
-
 const daysList = [];
 
 for (let i = 0; i < 7; i++) {

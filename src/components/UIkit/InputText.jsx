@@ -17,13 +17,13 @@ const InputText = (props) => {
   return (
     <form className={classes.root} noValidate autoComplete="off">
       <TextField
+        fullWidth={props.fullWidth}
         id="outlined-basic"
         label={props.label}
-        variant="outlined"
-        fullWidth={props.fullWidth}
         onChange={props.onChange}
         type={props.type}
         value={props.value}
+        variant="outlined"
       />
     </form>
   );

@@ -22,10 +22,10 @@ const Home = () => {
       />
       <div className="midium-space" />
       <div className="d-flex m-center">
-        <div className="midium-width">
           <div className="d-none__block">
             <OnedayList title={"今日のトレーニング"} dateId={dateId} />
           </div>
+        <div className="midium-width" style={{background: "#fff"}}>
           <TableBox />
         </div>
         <div className="small-width__none m-center">

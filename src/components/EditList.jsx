@@ -1,24 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { db } from "../firebase/index";
 import { getFitnessMenu, getUserId } from "../reducks/users/selectors";
 import { InputText, SecondButton } from "../components/UIkit/index";
 import { ListPaper } from "../components";
-import { db } from "../firebase/index";
 import { saveMenus } from "../reducks/users/operations";
+import { useDispatch, useSelector } from "react-redux";
 
 const EditList = () => {
   const [checked, setChecked] = useState([]),
     [fitMemo, setFitMemo] = useState([]),
-    [value, setvalue] = useState(""),
-    [scrollLine, setScrollLine] = useState(false);
+    [scrollLine, setScrollLine] = useState(false),
+    [value, setvalue] = useState("");
 
   const dispatch = useDispatch();
   const selector = useSelector((state) => state);
-  const uid = getUserId(selector);
-  const fitMenus = getFitnessMenu(selector);
+  const fitMenus = getFitnessMenu(selector),
+   uid = getUserId(selector);
 
   let id = window.location.pathname.split("/edit")[1];
-
   if (id !== "") {
     id = id.split("/")[1];
   }
@@ -68,11 +67,13 @@ const EditList = () => {
   const addMenu = (item, value) => {
     if (value === "") {
       return false;
-    } else if (item.indexOf(value) !== -1) {
-      alert("既にメニューがあります");
+    }
+    const newItem = {name: value, part: id};
+    if (item.indexOf(newItem) !== -1) {
+      alert ("すでに同じ名前があります")
       return false;
     }
-    const newMenu = [...item, value];
+    const newMenu = [...item, newItem];
 
     setFitMemo(newMenu);
     setvalue("");
@@ -95,11 +96,13 @@ const EditList = () => {
     <>
       <div className="list-border" id="scroll-area">
         <ListPaper
-          id="scroll-area"
-          title={id}
-          items={fitMemo}
-          handleToggle={handleToggle}
           checked={checked}
+          handleToggle={handleToggle}
+          id="scroll-area"
+          items={fitMemo}
+          partsId={id}
+          partsList={false}
+          title={id}
         />
       </div>
       <div className={classes}>

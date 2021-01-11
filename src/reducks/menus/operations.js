@@ -14,8 +14,6 @@ export const fetchDayMenus = (uid, dateId, date) => {
       .get()
       .then((snapshot) => {
         if (!snapshot.exists) {
-          console.log("kkkkkkk");
-
           dispatch(
             emptyMenusAction({
               date: date,
@@ -33,23 +31,23 @@ export const fetchDayMenus = (uid, dateId, date) => {
   };
 };
 
-export const saveDayMenus = (items, date, uid, dateId) => {
+export const saveDayMenus = (items, days, date, uid, dateId) => {
   return async (dispatch) => {
     const timestamp = FirebaseTimestamp.now();
-
     const partsArr = [];
-    items.map((item) => {
-      const i = item.indexOf("＜");
-      return partsArr.push(item.substring(i + 1, item.length - 1));
-    });
+    items.map(value => {
+      return partsArr.push(value.part)
+    })
 
     const newData = {
       fitItems: items,
       update_at: timestamp,
       partsId: partsArr,
+      days: days,
       date: date,
       created_at: timestamp,
     };
+    console.log(dateId)
 
     await db
       .collection("users")

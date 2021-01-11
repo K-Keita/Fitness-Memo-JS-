@@ -22,10 +22,9 @@ const LinkContainer = (props) => {
 
   const isArr = rows.map((row, index) => (
     <PartsButton label={row.name} key={String(index)} path={row.link} />
-  ));
+    ));
 
   const notArr = <PartsButton label={props.buttonLabel} path={props.link} />;
-
   const box = confirmArr ? isArr : notArr;
 
   return (

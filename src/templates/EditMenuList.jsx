@@ -1,15 +1,15 @@
 import React from "react";
-import { EditList, LinkContainer } from "../components";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import EditIcon from "@material-ui/icons/Edit";
 import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
 import ListAltIcon from "@material-ui/icons/ListAlt";
+import { EditList, LinkContainer } from "../components";
 
 const EditMenuList = () => {
   return (
     <div className="container-width">
       <LinkContainer
-        flexLine={"d-flex__left"}
+        flexLine={"l-flex"}
         icons={<HomeOutlinedIcon fontSize="large" className="icons-align" />}
         label={"Fitness-Memo"}
         link={"/"}
@@ -33,7 +33,7 @@ const EditMenuList = () => {
         arr={true}
       />
       <LinkContainer
-        flexLine={"d-flex__left"}
+        flexLine={"l-flex"}
         icons={<ListAltIcon className={"iconst-align"} />}
         label={"過去のトレーニング"}
         link={"/list"}

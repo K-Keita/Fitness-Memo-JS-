@@ -1,11 +1,11 @@
 import React, { useCallback, useState } from "react";
-import { useDispatch } from "react-redux";
 import {
   InputText,
   SecondButton,
   PartsButton,
 } from "../components/UIkit/index";
 import { signIn } from "../reducks/users/operations";
+import { useDispatch } from "react-redux";
 
 const SignIn = () => {
   const [email, setEmail] = useState(""),

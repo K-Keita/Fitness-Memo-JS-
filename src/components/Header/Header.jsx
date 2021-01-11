@@ -7,22 +7,22 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch } from "react-redux";
 import { signOut } from "../../reducks/users/operations";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
+  button: {
+    color: "#fff",
+    cursor: "pointer"
+  },
+  mainColor: {
+    backgroundColor: green["A400"],
+  },
   root: {
     flexGrow: 1,
   },
   title: {
     flexGrow: 1,
+    textAlign: "center"
   },
-  mainColor: {
-    backgroundColor: green["A400"],
-  },
-  icon: {
-    "& > svg": {
-      margin: theme.spacing(2),
-    },
-  },
-}));
+});
 
 const Header = () => {
   const classes = useStyles();
@@ -35,10 +35,10 @@ const Header = () => {
         <AppBar position="static" className={classes.mainColor}>
           <Toolbar>
             <div className={"midium-space"} />
-            <Typography variant="h6" className={classes.title}>
+            <Typography variant="h4" className={classes.title}>
               Fitness-Memo
             </Typography>
-            <div className="p-cursor" onClick={() => dispatch(signOut())}>
+            <div className={classes.button} onClick={() => dispatch(signOut())}>
               ログアウト
             </div>
             <div className={"midium-space"} />

@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { LeftPaperTitle, ListPaper } from "../components/index";
-import { SecondButton } from "../components/UIkit/index";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import { makeStyles } from "@material-ui/core/styles";
 import { getFitnessMenu, getUserId } from "../reducks/users/selectors";
-import { saveDayMenus, fetchDayMenus } from "../reducks/menus/operations";
 import { getOnedayMenu } from "../reducks/menus/selectors";
+import { LeftPaperTitle, ListPaper } from "../components/index";
+import { makeStyles } from "@material-ui/core/styles";
+import { saveDayMenus, fetchDayMenus } from "../reducks/menus/operations";
+import { SecondButton } from "../components/UIkit/index";
+import { useDispatch, useSelector } from "react-redux";
 
 const useStyles = makeStyles(() => ({
   root: {
     margin: "auto",
   },
   paper: {
-    width: 250,
+    border: "solid 1px #4caf50",
     height: 300,
     overflow: "auto",
+    width: 280,
   },
 }));
 
@@ -30,7 +31,6 @@ let days = new Date(d.getFullYear(), d.getMonth(), d.getDate());
 let year;
 let month;
 let day;
-
 let date = `${todayYear}/${todayMonth}/${todayDate}`;
 let titleDay = `${todayMonth}/${todayDate}`;
 let dateId = String(todayYear) + String(todayMonth) + String(todayDate);
@@ -43,6 +43,7 @@ const intersection = (a, b) => {
   return a.filter((value) => b.indexOf(value) !== -1);
 };
 
+//日付の変更
 const changeDay = () => {
   year = days.getFullYear();
   month = days.getMonth() + 1;
@@ -56,25 +57,28 @@ const TransferList = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const selector = useSelector((state) => state);
-  const uid = getUserId(selector);
-  const fitMenus = getFitnessMenu(selector);
-  const fitItems = getOnedayMenu(selector);
+
+  const dayMenu = getOnedayMenu(selector),
+   partsMenu = getFitnessMenu(selector),
+   uid = getUserId(selector);
 
   const [checked, setChecked] = useState([]),
     [left, setLeft] = useState([]),
     [right, setRight] = useState([]),
     [dateTitle, setDateTitle] = useState(titleDay),
-    [isRegist, setIsRegist] = useState(false);
+    [isRegist, setIsRegist] = useState(false),
+    [partsId, setPartsId] = useState([]);
 
   const leftChecked = intersection(checked, left);
   const rightChecked = intersection(checked, right);
 
   const id = String(props.id);
 
-  const addClass = !isRegist ? "sign-box" : "sign-box m3-color";
-  const leftClick = leftChecked.length === 0 ? "" : "m3-color";
-  const rightClick = rightChecked.length === 0 ? "" : "m3-color";
+  const addClass = !isRegist ? "sign-box" : "sign-box m2-color";
+  const leftClick = leftChecked.length === 0 ? "" : "m2-color";
+  const rightClick = rightChecked.length === 0 ? "" : "m2-color";
 
+  //日付を一日前
   const prevdays = () => {
     days = new Date(days.getFullYear(), days.getMonth(), days.getDate() - 1);
 
@@ -82,6 +86,7 @@ const TransferList = (props) => {
     setDateTitle(titleDay);
   };
 
+  //日付を一日後
   const nextdays = () => {
     if (dateId === nowDateId) {
       return false;
@@ -92,6 +97,7 @@ const TransferList = (props) => {
     setDateTitle(titleDay);
   };
 
+  //チェックのオンオフ
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
@@ -105,32 +111,40 @@ const TransferList = (props) => {
     setChecked(newChecked);
   };
 
+  //メニューの削除
   const handleCheckedRight = () => {
     setIsRegist(true);
     setLeft(not(left, leftChecked));
     setChecked(not(checked, leftChecked));
   };
 
+  //メニューの追加
   const handleCheckedLeft = () => {
-    const registLeft = left;
-    const registArr = [];
+    const registArr = left;
+    const arr = [];
+    registArr.map(value => {
+      arr.push(value.name)
+    })
+
+    // const registArr = [];
+    const partsArr = [];
     rightChecked.map((value) => {
-      return registArr.push(`${value}＜${id}＞`);
+      if (arr.indexOf(value.name) === -1) {
+
+        partsArr.push(id);
+        return registArr.push({name: value.name, part: id});
+      }
     });
 
-    const registArr2 = [...registLeft, ...registArr];
-
-    const registArr3 = registArr2.filter((x, i, self) => {
-      return self.indexOf(x) === i;
-    });
+    // const registArr2 = [...registArr, ...registArr];
 
     setIsRegist(true);
-    setLeft(registArr3);
+    setLeft(registArr);
     setChecked(not(checked, rightChecked));
   };
 
   useEffect(() => {
-    setRight(fitMenus[id]);
+    setRight(partsMenu[id]);
   }, [id]);
 
   useEffect(() => {
@@ -138,26 +152,28 @@ const TransferList = (props) => {
   }, [dateId]);
 
   useEffect(() => {
-    setLeft(fitItems);
-  }, [fitItems]);
+    setLeft(dayMenu);
+  }, [dayMenu]);
 
   return (
     <>
       <div className="min_midium-width">
         <Grid
-          container
-          spacing={2}
-          justify="center"
           alignItems="center"
+          container
           className={classes.root}
+          justify="center"
+          spacing={2}
         >
           <Grid item>
             <Paper className={classes.paper} id="m-height">
               <ListPaper
-                title={id}
+                checked={checked}
                 handleToggle={handleToggle}
                 items={right}
-                checked={checked}
+                title={id}
+                partsId={id}
+                partsList={false}
               />
             </Paper>
           </Grid>
@@ -182,6 +198,12 @@ const TransferList = (props) => {
           <Grid item>
             <Paper className={classes.paper} id="m-height">
               <ListPaper
+                handleToggle={handleToggle}
+                items={left}
+                checked={checked}
+                class={"block"}
+                partsId={partsId}
+                partsList={true}
                 title={
                   <LeftPaperTitle
                     label={dateTitle}
@@ -189,10 +211,6 @@ const TransferList = (props) => {
                     nextdays={nextdays}
                   />
                 }
-                handleToggle={handleToggle}
-                items={left}
-                checked={checked}
-                class={"block"}
               />
             </Paper>
           </Grid>
@@ -202,7 +220,7 @@ const TransferList = (props) => {
         <SecondButton
           label={"登録する"}
           fullWidth={true}
-          onClick={() => dispatch(saveDayMenus(left, date, uid, dateId))}
+          onClick={() => dispatch(saveDayMenus(left, days, date, uid, dateId))}
         />
       </div>
     </>

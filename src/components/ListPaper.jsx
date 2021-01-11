@@ -8,12 +8,12 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   root: {
+    boxSizing: "border-box",
+    maxHeight: 250,
+    maxWidth: 800,
+    minHeight: 150,
     padding: 0,
     width: "100%",
-    maxWidth: 800,
-    maxHeight: 250,
-    minHeight: 150,
-    boxSizing: "border-box",
   },
 });
 
@@ -25,31 +25,35 @@ const ListPaper = (props) => {
       <div className="title-box">{props.title}</div>
       {props.items.map((value, index) => {
         const labelId = `checkbox-list-label-${value}`;
+        const colorBox = props.partsList ? `color-box color_${value.part}` : `color-box color_${props.partsId}`
         return (
-          <div className={index % 2 === 0 ? "m-color" : "m2-color"} key={index}>
+          <div className="m-color" key={index}>
             <ListItem
-              key={value}
-              role={undefined}
-              dense
               button
+              dense
+              role={undefined}
+              key={value}
               onClick={props.handleToggle(value)}
             >
               <div className={props.class}>
-                <ListItemIcon>
+
                   <Checkbox
+checked={props.checked.indexOf(value) !== -1}
+disableRipple
+
                     edge="start"
-                    checked={props.checked.indexOf(value) !== -1}
-                    tabIndex={-1}
-                    disableRipple
+
                     inputProps={{ "aria-labelledby": labelId }}
+                    tabIndex={-1}
                   />
-                </ListItemIcon>
+
               </div>
               <ListItemText
-                id={labelId}
-                primary={value}
                 className={props.textHeight}
+                id={labelId}
+                primary={value.name}
               />
+              <div className={colorBox} />
             </ListItem>
           </div>
         );

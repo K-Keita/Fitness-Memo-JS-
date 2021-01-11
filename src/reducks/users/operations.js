@@ -2,6 +2,39 @@ import { signInAction, signOutAction, fetchUsersAction } from "./actions";
 import { auth, db, FirebaseTimestamp } from "../../firebase/index";
 import { push } from "connected-react-router";
 
+function createData(name) {
+  return { name };
+}
+
+const  arm= [ "ダンベルカール",  "フレンチプレス","ケーブルプレス"],
+  shoulder= ["ショルダープレス", "サイドレイズ", "フロントレイズ"],
+  chest= [
+    "ダンベルプレス",
+    "ベンチプレス",
+    "インクラインベンチプレス",
+  ],
+  back= ["チンニング", "デッドリフト", "ラットプルダウン"],
+  reg= ["スクワット", "レッグエクステンション", "レッグカール"];
+
+const fitMenus = {
+  arm: [],
+  shoulder: [],
+  chest: [],
+  back: [],
+  reg: [],
+}
+
+const createArr = (part, arr) => {
+  part.forEach(part => {
+    arr.push(createData(part));
+  })
+}
+createArr(arm, fitMenus.arm);
+createArr(shoulder, fitMenus.shoulder);
+createArr(chest, fitMenus.chest);
+createArr(back, fitMenus.back);
+createArr(reg, fitMenus.reg);
+
 export const listenAuthState = () => {
   return async (dispatch) => {
     return auth.onAuthStateChanged((user) => {
@@ -126,17 +159,7 @@ export const signUp = (username, email, password, confirmPassword) => {
             uid: uid,
             updated_at: timestamp,
             username: username,
-            fitMenus: {
-              arm: ["ダンベルカール", "フレンチプレス", "ケーブルプレス"],
-              shoulder: ["ショルダープレス", "サイドレイズ", "フロントレイズ"],
-              chest: [
-                "ダンベルプレス",
-                "ベンチプレス",
-                "インクラインベンチプレス",
-              ],
-              back: ["チンニング", "デッドリフト", "ラットプルダウン"],
-              reg: ["スクワット", "レッグエクステンション", "レッグカール"],
-            },
+            fitMenus: fitMenus,
           };
 
           db.collection("users")

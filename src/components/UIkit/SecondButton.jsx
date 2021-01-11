@@ -1,6 +1,6 @@
 import React from "react";
-import green from "@material-ui/core/colors/green";
 import Button from "@material-ui/core/Button";
+import green from "@material-ui/core/colors/green";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -22,11 +22,11 @@ const SecondButton = (props) => {
   return (
     <div className={classes.root}>
       <Button
-        variant="outlined"
         className={classes.primary}
+        fullWidth={props.fullWidth}
         href="#outlined-buttons"
         onClick={props.onClick}
-        fullWidth={props.fullWidth}
+        variant="outlined"
       >
         {props.label}
       </Button>
