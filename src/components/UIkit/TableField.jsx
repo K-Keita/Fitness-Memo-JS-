@@ -18,13 +18,13 @@ const TableField = React.memo((props) => {
   const classes = useStyles();
   const selector = useSelector((state) => state);
   const uid = getUserId(selector),
-  fitItems = getOnedayMenu(selector);
+    dayMenu = getOnedayMenu(selector);
 
   const date1 = new Date();
-  const colorBox = `color_${props.part} color-box`
+  const colorBox = `color_${props.part} color-box`;
 
   const [nearday, setNearday] = useState("-"),
-    [day, setDay] = useState("No-Traning");
+    [traningDay, setTraningDay] = useState("No-Traning");
 
   useEffect(() => {
     db.collection("users")
@@ -43,23 +43,23 @@ const TableField = React.memo((props) => {
           const termDay = Math.floor((date1 - date2) / 86400000);
 
           setNearday(termDay);
-          setDay(data.date);
+          setTraningDay(data.date);
         });
       });
-  }, [fitItems]);
+  }, [dayMenu]);
 
   return (
-    <TableRow style={{ height: "30px"}}>
-      <TableCell align="center" className="m-color d-flex" style={{fontSize: "16px"}}>
-        <div className={colorBox} style={{marginRight: "8px"}} />
-       {props.name}
+    <TableRow style={{ height: "30px" }}>
+      <TableCell
+        align="center"
+        className="m-color d-flex"
+        style={{ fontSize: "16px" }}
+      >
+        <div className={colorBox} style={{ marginRight: "8px" }} />
+        {props.name}
       </TableCell>
-      <TableCell className={classes.tableCell}>
-        {day}
-      </TableCell>
-      <TableCell className={classes.tableCell}>
-        {nearday}日
-      </TableCell>
+      <TableCell className={classes.tableCell}>{traningDay}</TableCell>
+      <TableCell className={classes.tableCell}>{nearday}日</TableCell>
     </TableRow>
   );
 });

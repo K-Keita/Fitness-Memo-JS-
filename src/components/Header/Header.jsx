@@ -10,7 +10,7 @@ import { signOut } from "../../reducks/users/operations";
 const useStyles = makeStyles({
   button: {
     color: "#fff",
-    cursor: "pointer"
+    cursor: "pointer",
   },
   mainColor: {
     backgroundColor: green["A400"],
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
   },
   title: {
     flexGrow: 1,
-    textAlign: "center"
+    textAlign: "center",
   },
 });
 
@@ -34,14 +34,14 @@ const Header = () => {
       <div className={classes.root}>
         <AppBar position="static" className={classes.mainColor}>
           <Toolbar>
-            <div className={"midium-space"} />
+            <div className="midium-space" />
             <Typography variant="h4" className={classes.title}>
               Fitness-Memo
             </Typography>
             <div className={classes.button} onClick={() => dispatch(signOut())}>
               ログアウト
             </div>
-            <div className={"midium-space"} />
+            <div className="midium-space" />
           </Toolbar>
         </AppBar>
       </div>

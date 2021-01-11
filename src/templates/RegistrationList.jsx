@@ -13,9 +13,8 @@ const RegistrationList = () => {
   }
 
   return (
-    <div className="container-width">
+    <>
       <LinkContainer
-        flexLine={"l-flex"}
         icons={<HomeOutlinedIcon fontSize="large" className="icons-align" />}
         label={"Fitness-Memo"}
         link={"/"}
@@ -23,7 +22,6 @@ const RegistrationList = () => {
         arr={false}
       />
       <LinkContainer
-        flexLine={"l-flex"}
         icons={<AddCircleOutlineIcon className="icons-align" />}
         label={"トレーニングメニューを登録する"}
         link={"/regist"}
@@ -32,21 +30,19 @@ const RegistrationList = () => {
       <TransferList id={id} />
       <div className="midium-space" />
       <LinkContainer
-        flexLine={"l-flex"}
         icons={<EditIcon className="icons-align" />}
         label={"メニューリストを編集する"}
         link={"/edit"}
         arr={true}
       />
       <LinkContainer
-        flexLine={"l-flex"}
         icons={<ListAltIcon className="icons-align" />}
         label={"過去のトレーニングリスト"}
         link={"/list"}
         buttonLabel={"見る"}
         arr={false}
       />
-    </div>
+    </>
   );
 };
 

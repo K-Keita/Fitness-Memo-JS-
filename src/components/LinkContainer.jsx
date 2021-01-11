@@ -22,7 +22,7 @@ const LinkContainer = (props) => {
 
   const isArr = rows.map((row, index) => (
     <PartsButton label={row.name} key={String(index)} path={row.link} />
-    ));
+  ));
 
   const notArr = <PartsButton label={props.buttonLabel} path={props.link} />;
   const box = confirmArr ? isArr : notArr;
@@ -30,7 +30,7 @@ const LinkContainer = (props) => {
   return (
     <>
       <LinkContainerTop icons={props.icons} label={props.label} />
-      <div className={props.flexLine}>{box}</div>
+      <div className="l-flex">{box}</div>
     </>
   );
 };

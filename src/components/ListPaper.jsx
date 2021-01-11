@@ -1,64 +1,85 @@
 import React from "react";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
 import Checkbox from "@material-ui/core/Checkbox";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   root: {
+    maxWidth: 370,
+    minWidth: 270,
+    border: "solid 2px #00c853",
     boxSizing: "border-box",
-    maxHeight: 250,
-    maxWidth: 800,
-    minHeight: 150,
+    borderRadius: 2,
+    backgroundColor: "mintcream",
+    margin: "20px auto",
+    height: 260,
     padding: 0,
-    width: "100%",
+  },
+  cardHeader: {
+    margin: 0,
+    textAlign: "center",
+    fontSize: 18,
+    height: 45,
+    borderBottom: "solid 2px gray",
+    boxSizing: "border-box",
+    backgroundColor: "rgb(38, 240, 139)",
+  },
+  list: {
+    height: 200,
+    overflow: "auto",
   },
 });
 
 const ListPaper = (props) => {
   const classes = useStyles();
 
+  const check = props.check ? "block" : "d-none";
+  const text = props.check ? "" : "text-height";
+
   return (
-    <List className={classes.root}>
-      <div className="title-box">{props.title}</div>
-      {props.items.map((value, index) => {
-        const labelId = `checkbox-list-label-${value}`;
-        const colorBox = props.partsList ? `color-box color_${value.part}` : `color-box color_${props.partsId}`
-        return (
-          <div className="m-color" key={index}>
-            <ListItem
-              button
-              dense
-              role={undefined}
-              key={value}
-              onClick={props.handleToggle(value)}
-            >
-              <div className={props.class}>
+    <Card className={classes.root}>
+      <CardHeader className={classes.cardHeader} title={props.title} />
+      <List className={classes.list}>
+        {props.items.map((value, index) => {
+          const labelId = `checkbox-list-label-${value}`;
+          const colorBox = props.box
+            ? `color-box color_${value.part}`
+            : `color-box color_${props.title}`;
 
+          return (
+            <div key={index}>
+              <ListItem
+                button
+                dense
+                role={undefined}
+                key={value}
+                onClick={props.handleToggle(value)}
+              >
+                <div className={check}>
                   <Checkbox
-checked={props.checked.indexOf(value) !== -1}
-disableRipple
-
+                    checked={props.checked.indexOf(value) !== -1}
+                    disableRipple
                     edge="start"
-
                     inputProps={{ "aria-labelledby": labelId }}
                     tabIndex={-1}
                   />
-
-              </div>
-              <ListItemText
-                className={props.textHeight}
-                id={labelId}
-                primary={value.name}
-              />
-              <div className={colorBox} />
-            </ListItem>
-          </div>
-        );
-      })}
-    </List>
+                </div>
+                <ListItemText
+                  className={text}
+                  id={labelId}
+                  primary={value.name}
+                />
+                <div className={colorBox} />
+              </ListItem>
+            </div>
+          );
+        })}
+      </List>
+    </Card>
   );
 };
 

@@ -3,7 +3,6 @@ import { fetchDayMenusAction, emptyMenusAction } from "./actions";
 import { push } from "connected-react-router";
 
 export const fetchDayMenus = (uid, dateId, date) => {
-  console.log(dateId);
   const id = String(dateId);
   return async (dispatch) => {
     await db
@@ -25,8 +24,8 @@ export const fetchDayMenus = (uid, dateId, date) => {
           dispatch(fetchDayMenusAction(data));
         }
       })
-      .catch(() => {
-        console.log("ok");
+      .catch((error) => {
+        throw Error(error);
       });
   };
 };
@@ -35,19 +34,18 @@ export const saveDayMenus = (items, days, date, uid, dateId) => {
   return async (dispatch) => {
     const timestamp = FirebaseTimestamp.now();
     const partsArr = [];
-    items.map(value => {
-      return partsArr.push(value.part)
-    })
+    items.map((value) => {
+      return partsArr.push(value.part);
+    });
 
     const newData = {
-      fitItems: items,
-      update_at: timestamp,
-      partsId: partsArr,
-      days: days,
-      date: date,
       created_at: timestamp,
+      date: date,
+      days: days,
+      fitItems: items,
+      partsId: partsArr,
+      update_at: timestamp,
     };
-    console.log(dateId)
 
     await db
       .collection("users")
@@ -56,7 +54,6 @@ export const saveDayMenus = (items, days, date, uid, dateId) => {
       .doc(dateId)
       .set(newData, { merge: true })
       .then(() => {
-        console.log("set-ok!");
         dispatch(fetchDayMenusAction(newData));
       });
 

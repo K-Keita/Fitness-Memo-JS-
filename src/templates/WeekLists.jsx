@@ -23,9 +23,8 @@ for (let i = 0; i < 7; i++) {
 
 const WeekLists = () => {
   return (
-    <div className="container-width">
+    <>
       <LinkContainer
-        flexLine={"l-flex"}
         icons={<HomeOutlinedIcon fontSize="large" className="icons-align" />}
         label={"Fitness-Memo"}
         link={"/"}
@@ -44,20 +43,18 @@ const WeekLists = () => {
         })}
       </div>
       <LinkContainer
-        flexLine={"l-flex"}
         icons={<AddCircleOutlineIcon className="icons-align" />}
         label={"トレーニングメニューを登録"}
         link={"/regist"}
         arr={true}
       />
       <LinkContainer
-        flexLine={"l-flex"}
         icons={<EditIcon className="icons-align" />}
         label={"メニューリストを編集"}
         link={"/edit"}
         arr={true}
       />
-    </div>
+    </>
   );
 };
 

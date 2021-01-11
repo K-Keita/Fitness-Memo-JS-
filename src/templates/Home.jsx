@@ -15,17 +15,17 @@ const dateId = String(year) + String(month) + String(day);
 
 const Home = () => {
   return (
-    <div className="container-width">
+    <>
       <LinkContainerTop
         icons={<HomeOutlinedIcon fontSize="large" className="icons-align" />}
         label={"Fitness-Memo"}
       />
       <div className="midium-space" />
       <div className="d-flex m-center">
-          <div className="d-none__block">
-            <OnedayList title={"今日のトレーニング"} dateId={dateId} />
-          </div>
-        <div className="midium-width" style={{background: "#fff"}}>
+        <div className="d-none__block">
+          <OnedayList title={"今日のトレーニング"} dateId={dateId} />
+        </div>
+        <div className="midium-width" style={{ background: "#fff" }}>
           <TableBox />
         </div>
         <div className="small-width__none m-center">
@@ -33,28 +33,25 @@ const Home = () => {
         </div>
       </div>
       <LinkContainer
-        flexLine="l-flex"
         icons={<AddCircleOutlineIcon className="icons-align" />}
         label={"今日のトレーニングを登録"}
         link={"/regist"}
         arr={true}
       />
       <LinkContainer
-        flexLine="l-flex"
         icons={<EditIcon className="icons-align" />}
         label={"メニューリストを編集する"}
         link={"/edit"}
         arr={true}
       />
       <LinkContainer
-        flexLine="l-flex"
         icons={<ListAltIcon className="icons-align" />}
         label={"過去のトレーニング"}
         buttonLabel={"見る"}
         link={"/list"}
         arr={false}
       />
-    </div>
+    </>
   );
 };
 

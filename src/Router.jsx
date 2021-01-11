@@ -8,6 +8,7 @@ import {
   SignUp,
   SignIn,
   Reset,
+  Top,
 } from "./templates/index";
 import Auth from "./Auth";
 
@@ -15,13 +16,14 @@ const Router = () => {
   return (
     <Switch>
       <Route exact path={"/reset"} component={Reset} />
-      <Route exact path={"/signup"} component={SignUp} />
       <Route exact path={"/signin"} component={SignIn} />
+      <Route exact path={"/signup"} component={SignUp} />
+      <Route exact path={"/top"} component={Top} />
       <Auth>
         <Route exact path={"(/)?"} component={Home} />
-        <Route path={"/regist(/id)?"} component={RegistrationList} />
         <Route exact path={"/list"} component={WeekLists} />
         <Route path={"/edit(/id)?"} component={EditMenuList} />
+        <Route path={"/regist(/id)?"} component={RegistrationList} />
       </Auth>
     </Switch>
   );

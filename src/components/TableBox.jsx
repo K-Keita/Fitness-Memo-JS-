@@ -8,24 +8,21 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 
-// const TableCell = withStyles((theme) => ({
-//   head: {
-//     fontSize: 18,
-
-//   },
-//   body: {
-//     fontSize: 14,
-//     height: 18,
-//   },
-// }))(TableCell);
-
 const useStyles = makeStyles({
-  tableWidth: {
-    minWidth: 300,
-  },
   tableCell: {
     fontSize: 18,
     textAlign: "center",
+  },
+  tableContainer: {
+    width: "100%",
+    minWidth: 355,
+    boxSizing: "border-box",
+    border: "solid 2px #00c853",
+    backgroundColor: "rgb(38, 240, 139)",
+    borderRadius: 2,
+  },
+  tableWidth: {
+    minWidth: 300,
   },
 });
 
@@ -41,10 +38,10 @@ const TableBox = () => {
   ];
 
   return (
-    <TableContainer className="table-border">
+    <TableContainer className={classes.tableContainer}>
       <Table className={classes.tableWidth} aria-label="simple table">
         <TableHead>
-          <TableRow className="border__under">
+          <TableRow>
             <TableCell className={classes.tableCell} width="25%">
               部位
             </TableCell>

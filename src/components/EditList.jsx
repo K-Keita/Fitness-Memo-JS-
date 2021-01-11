@@ -15,7 +15,7 @@ const EditList = () => {
   const dispatch = useDispatch();
   const selector = useSelector((state) => state);
   const fitMenus = getFitnessMenu(selector),
-   uid = getUserId(selector);
+    uid = getUserId(selector);
 
   let id = window.location.pathname.split("/edit")[1];
   if (id !== "") {
@@ -23,8 +23,8 @@ const EditList = () => {
   }
 
   const selectItems = checked.length === 0;
-  const classes = selectItems ? "sign-box" : "sign-box m3-color";
-  const isEmpty = value === "" ? "b-position" : "b-position m3-color";
+  const classes = selectItems ? "sign-box" : "sign-box m-color";
+  const isEmpty = value === "" ? "b-position" : "b-position m-color";
 
   const inputvalue = (event) => {
     setvalue(event.target.value);
@@ -68,9 +68,9 @@ const EditList = () => {
     if (value === "") {
       return false;
     }
-    const newItem = {name: value, part: id};
+    const newItem = { name: value, part: id };
     if (item.indexOf(newItem) !== -1) {
-      alert ("すでに同じ名前があります")
+      alert("すでに同じ名前があります");
       return false;
     }
     const newMenu = [...item, newItem];
@@ -94,15 +94,14 @@ const EditList = () => {
 
   return (
     <>
-      <div className="list-border" id="scroll-area">
+      <div id="scroll-area">
         <ListPaper
+          box={false}
           checked={checked}
           handleToggle={handleToggle}
-          id="scroll-area"
           items={fitMemo}
-          partsId={id}
-          partsList={false}
           title={id}
+          check={false}
         />
       </div>
       <div className={classes}>
@@ -114,7 +113,7 @@ const EditList = () => {
           }}
         />
       </div>
-      <div className="input-center c-flex">
+      <div className="input-center d-flex">
         <InputText
           fullWidth={true}
           label={"新規メニュー"}

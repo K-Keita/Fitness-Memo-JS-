@@ -20,7 +20,7 @@ const SignUp = () => {
     email !== "" &&
     password !== "" &&
     confirmPassword !== "";
-  const addClass = fillIn ? "b-center m3-color" : "b-center";
+  const addClass = fillIn ? "b-center m-color" : "b-center";
 
   const inputUsername = useCallback(
     (event) => {
@@ -48,7 +48,7 @@ const SignUp = () => {
   );
 
   return (
-    <div className={"container-width"}>
+    <>
       <div className={"sign-box sign-border"}>
         <h2 className={"sign-title"}>アカウント登録</h2>
         <div className={"midium-space"} />
@@ -92,7 +92,7 @@ const SignUp = () => {
           path={"/signin"}
         />
       </div>
-    </div>
+    </>
   );
 };
 

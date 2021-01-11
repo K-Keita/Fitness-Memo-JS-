@@ -15,7 +15,7 @@ const useStyles = makeStyles(() => ({
   },
   paper: {
     border: "solid 1px #4caf50",
-    height: 300,
+    height: 250,
     overflow: "auto",
     width: 280,
   },
@@ -59,24 +59,23 @@ const TransferList = (props) => {
   const selector = useSelector((state) => state);
 
   const dayMenu = getOnedayMenu(selector),
-   partsMenu = getFitnessMenu(selector),
-   uid = getUserId(selector);
+    partsMenu = getFitnessMenu(selector),
+    uid = getUserId(selector);
 
   const [checked, setChecked] = useState([]),
     [left, setLeft] = useState([]),
     [right, setRight] = useState([]),
     [dateTitle, setDateTitle] = useState(titleDay),
-    [isRegist, setIsRegist] = useState(false),
-    [partsId, setPartsId] = useState([]);
+    [isRegist, setIsRegist] = useState(false);
 
   const leftChecked = intersection(checked, left);
   const rightChecked = intersection(checked, right);
 
   const id = String(props.id);
 
-  const addClass = !isRegist ? "sign-box" : "sign-box m2-color";
-  const leftClick = leftChecked.length === 0 ? "" : "m2-color";
-  const rightClick = rightChecked.length === 0 ? "" : "m2-color";
+  const addClass = !isRegist ? "sign-box" : "sign-box m-color";
+  const leftClick = leftChecked.length === 0 ? "" : "m-color";
+  const rightClick = rightChecked.length === 0 ? "" : "m-color";
 
   //日付を一日前
   const prevdays = () => {
@@ -122,21 +121,17 @@ const TransferList = (props) => {
   const handleCheckedLeft = () => {
     const registArr = left;
     const arr = [];
-    registArr.map(value => {
-      arr.push(value.name)
-    })
+    registArr.map((value) => {
+      arr.push(value.name);
+    });
 
-    // const registArr = [];
     const partsArr = [];
     rightChecked.map((value) => {
       if (arr.indexOf(value.name) === -1) {
-
         partsArr.push(id);
-        return registArr.push({name: value.name, part: id});
+        return registArr.push({ name: value.name, part: id });
       }
     });
-
-    // const registArr2 = [...registArr, ...registArr];
 
     setIsRegist(true);
     setLeft(registArr);
@@ -166,14 +161,14 @@ const TransferList = (props) => {
           spacing={2}
         >
           <Grid item>
-            <Paper className={classes.paper} id="m-height">
+            <Paper id="m-height">
               <ListPaper
+                box={false}
                 checked={checked}
+                check={true}
                 handleToggle={handleToggle}
                 items={right}
                 title={id}
-                partsId={id}
-                partsList={false}
               />
             </Paper>
           </Grid>
@@ -196,14 +191,13 @@ const TransferList = (props) => {
             </Grid>
           </Grid>
           <Grid item>
-            <Paper className={classes.paper} id="m-height">
+            <Paper id="m-height">
               <ListPaper
+                box={true}
                 handleToggle={handleToggle}
                 items={left}
                 checked={checked}
-                class={"block"}
-                partsId={partsId}
-                partsList={true}
+                check={true}
                 title={
                   <LeftPaperTitle
                     label={dateTitle}

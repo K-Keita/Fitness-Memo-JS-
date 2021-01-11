@@ -4,6 +4,8 @@ import { listenAuthState } from "./reducks/users/operations";
 import { getIsSignedIn } from "./reducks/users/selectors";
 
 const Auth = ({ children }) => {
+  let id = window.location.pathname;
+
   const dispatch = useDispatch();
   const selector = useSelector((state) => state);
   const isSignedIn = getIsSignedIn(selector);
@@ -13,8 +15,6 @@ const Auth = ({ children }) => {
       dispatch(listenAuthState());
     }
   }, []);
-
-  let id = window.location.pathname;
 
   useEffect(() => {
     window.scrollTo(0, 0);

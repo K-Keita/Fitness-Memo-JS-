@@ -10,8 +10,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   primary: {
-    color: green["A400"],
     borderColor: green["A400"],
+    color: green["A400"],
     margin: 0,
   },
 }));

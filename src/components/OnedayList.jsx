@@ -33,15 +33,15 @@ const OnedayList = (props) => {
       .get()
       .then((snapshot) => {
         if (!snapshot.exists) {
-          setMenuList([{name: "TRANING-OFF"}]);
+          setMenuList([{ name: "TRANING-OFF" }]);
         } else {
           const data = snapshot.data();
 
           if (data.fitItems.length === 0) {
-            setMenuList([{name: "TRANING-OFF"}]);
+            setMenuList([{ name: "TRANING-OFF" }]);
           } else {
             data.fitItems.map((value, index) => {
-              return value.name = `${index + 1}:　${value.name}`;
+              return (value.name = `${index + 1}:　${value.name}`);
             });
             setMenuList(data.fitItems);
           }
@@ -53,18 +53,14 @@ const OnedayList = (props) => {
   }, []);
 
   return (
-    <div className="list-border">
-      <ListPaper
-        checked={checked}
-        handleToggle={handleToggle}
-        title={props.title}
-        items={menuList}
-        class={"d-none"}
-        textHeight={"text-height"}
-        partsId={menuList}
-        partsList={true}
-      />
-    </div>
+    <ListPaper
+      box={true}
+      checked={checked}
+      check={false}
+      handleToggle={handleToggle}
+      title={props.title}
+      items={menuList}
+    />
   );
 };
 

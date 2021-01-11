@@ -13,7 +13,7 @@ const Reset = () => {
   const dispatch = useDispatch();
 
   const fillIn = email !== "";
-  const addClass = fillIn ? "b-center m3-color" : "b-center";
+  const addClass = fillIn ? "b-center m-color" : "b-center";
 
   const inputEmail = useCallback(
     (event) => {
@@ -23,7 +23,7 @@ const Reset = () => {
   );
 
   return (
-    <div className={"container-width"}>
+    <>
       <div className={"sign-box sign-border"}>
         <h2 className={"sign-title"}>パスワード再設定</h2>
         <div className={"midium-space"} />
@@ -44,7 +44,7 @@ const Reset = () => {
       <div className="sign-box">
         <PartsButton label={"・ログイン画面に戻る"} path={"/signin"} />
       </div>
-    </div>
+    </>
   );
 };
 

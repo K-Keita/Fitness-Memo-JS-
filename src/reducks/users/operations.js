@@ -5,16 +5,17 @@ import { push } from "connected-react-router";
 function createData(name) {
   return { name };
 }
+const createArr = (part, arr) => {
+  part.forEach((part) => {
+    arr.push(createData(part));
+  });
+};
 
-const  arm= [ "ダンベルカール",  "フレンチプレス","ケーブルプレス"],
-  shoulder= ["ショルダープレス", "サイドレイズ", "フロントレイズ"],
-  chest= [
-    "ダンベルプレス",
-    "ベンチプレス",
-    "インクラインベンチプレス",
-  ],
-  back= ["チンニング", "デッドリフト", "ラットプルダウン"],
-  reg= ["スクワット", "レッグエクステンション", "レッグカール"];
+const arm = ["ダンベルカール", "フレンチプレス", "ケーブルプレス"],
+  shoulder = ["ショルダープレス", "サイドレイズ", "フロントレイズ"],
+  chest = ["ダンベルプレス", "ベンチプレス", "インクラインベンチプレス"],
+  back = ["チンニング", "デッドリフト", "ラットプルダウン"],
+  reg = ["スクワット", "レッグエクステンション", "レッグカール"];
 
 const fitMenus = {
   arm: [],
@@ -22,13 +23,8 @@ const fitMenus = {
   chest: [],
   back: [],
   reg: [],
-}
+};
 
-const createArr = (part, arr) => {
-  part.forEach(part => {
-    arr.push(createData(part));
-  })
-}
 createArr(arm, fitMenus.arm);
 createArr(shoulder, fitMenus.shoulder);
 createArr(chest, fitMenus.chest);
@@ -46,7 +42,6 @@ export const listenAuthState = () => {
           .get()
           .then((snapshot) => {
             const data = snapshot.data();
-            console.log(data);
 
             dispatch(
               signInAction({
@@ -146,7 +141,6 @@ export const signUp = (username, email, password, confirmPassword) => {
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
         const user = result.user;
-        console.log("oko");
 
         if (user) {
           const uid = user.uid;
@@ -167,7 +161,6 @@ export const signUp = (username, email, password, confirmPassword) => {
             .set(userInitialData)
             .then(() => {
               dispatch(push("/"));
-              console.log("ok");
             });
         }
       });
@@ -213,7 +206,6 @@ export const saveMenus = (uid, id, newMenus) => {
           .set(data, { merge: true })
           .then(() => {
             dispatch(fetchUsersAction(data));
-            console.log("ok3");
           })
           .catch(() => {
             console.log(Error);

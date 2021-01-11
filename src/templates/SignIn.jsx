@@ -14,7 +14,7 @@ const SignIn = () => {
   const dispatch = useDispatch();
 
   const fillIn = email !== "" && password !== "";
-  const addClass = fillIn ? "b-center m3-color" : "b-center";
+  const addClass = fillIn ? "b-center m-color" : "b-center";
 
   const inputEmail = useCallback(
     (event) => {
@@ -30,7 +30,7 @@ const SignIn = () => {
   );
 
   return (
-    <div className={"container-width"}>
+    <>
       <div className={"sign-box sign-border"}>
         <h2 className={"sign-title"}>ログイン</h2>
         <div className={"midium-space"} />
@@ -64,7 +64,7 @@ const SignIn = () => {
           path={"/reset"}
         />
       </div>
-    </div>
+    </>
   );
 };
 
