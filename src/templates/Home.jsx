@@ -21,14 +21,11 @@ const Home = () => {
         label={"Fitness-Memo"}
       />
       <div className="midium-space" />
-      <div className="d-flex m-center">
-        <div className="d-none__block">
-          <OnedayList title={"今日のトレーニング"} dateId={dateId} />
-        </div>
-        <div className="midium-width" style={{ background: "#fff" }}>
+      <div className="d-flex">
+        <div className="midium-width">
           <TableBox />
         </div>
-        <div className="small-width__none m-center">
+        <div className="small-width__none">
           <OnedayList title={"今日のトレーニング"} dateId={dateId} />
         </div>
       </div>

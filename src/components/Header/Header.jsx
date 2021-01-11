@@ -8,15 +8,19 @@ import { useDispatch } from "react-redux";
 import { signOut } from "../../reducks/users/operations";
 
 const useStyles = makeStyles({
+  headPosition: {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    zIndex: 10,
+  },
   button: {
     color: "#fff",
     cursor: "pointer",
   },
   mainColor: {
     backgroundColor: green["A400"],
-  },
-  root: {
-    flexGrow: 1,
   },
   title: {
     flexGrow: 1,
@@ -30,8 +34,7 @@ const Header = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="head-position">
-      <div className={classes.root}>
+      <div className={classes.headPosition}>
         <AppBar position="static" className={classes.mainColor}>
           <Toolbar>
             <div className="midium-space" />
@@ -45,7 +48,6 @@ const Header = () => {
           </Toolbar>
         </AppBar>
       </div>
-    </div>
   );
 };
 

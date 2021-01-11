@@ -12,6 +12,14 @@ const useStyles = makeStyles({
     background: "#f5fffa",
     textAlign: "center",
   },
+  tableCell_a: {
+    background: "#f5fffa",
+    textAlign: "center",
+    fontSize: 16,
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+  },
 });
 
 const TableField = React.memo((props) => {
@@ -51,9 +59,7 @@ const TableField = React.memo((props) => {
   return (
     <TableRow style={{ height: "30px" }}>
       <TableCell
-        align="center"
-        className="m-color d-flex"
-        style={{ fontSize: "16px" }}
+        className={classes.tableCell_a}
       >
         <div className={colorBox} style={{ marginRight: "8px" }} />
         {props.name}

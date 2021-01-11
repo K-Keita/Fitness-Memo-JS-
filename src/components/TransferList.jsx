@@ -161,7 +161,7 @@ const TransferList = (props) => {
           spacing={2}
         >
           <Grid item>
-            <Paper id="m-height">
+            <Paper>
               <ListPaper
                 box={false}
                 checked={checked}
@@ -191,7 +191,7 @@ const TransferList = (props) => {
             </Grid>
           </Grid>
           <Grid item>
-            <Paper id="m-height">
+            <Paper>
               <ListPaper
                 box={true}
                 handleToggle={handleToggle}

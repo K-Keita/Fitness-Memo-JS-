@@ -92,7 +92,7 @@ const SignUp = () => {
           path={"/signin"}
         />
       </div>
-    </>
+      </>
   );
 };
 

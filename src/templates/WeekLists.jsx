@@ -35,7 +35,7 @@ const WeekLists = () => {
         icons={<ListAltIcon className="icons-align" />}
         label={"過去のトレーニング"}
       />
-      <div className="large-width m-center d-flex">
+      <div className="large-width d-flex">
         {daysList.map((days, index) => {
           return (
             <OnedayList key={String(index)} title={days.day} dateId={days.id} />

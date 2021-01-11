@@ -32,13 +32,17 @@ const useStyles = makeStyles({
     height: 200,
     overflow: "auto",
   },
+  text: {
+    padding: 6,
+    textAlign: "left"
+  }
 });
 
 const ListPaper = (props) => {
   const classes = useStyles();
 
   const check = props.check ? "block" : "d-none";
-  const text = props.check ? "" : "text-height";
+  const text = props.check ? "" : classes.text;
 
   return (
     <Card className={classes.root}>
