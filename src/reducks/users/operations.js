@@ -31,6 +31,53 @@ createArr(chest, fitMenus.chest);
 createArr(back, fitMenus.back);
 createArr(reg, fitMenus.reg);
 
+//匿名認証
+export const anonymousSignIn = (username) => {
+  return async (dispatch) => {
+    if (username === "") {
+      alert("必須項目が未入力です");
+      return false;
+    }
+    const timestamp = FirebaseTimestamp.now();
+    auth
+      .signInAnonymously()
+      .then(async (result) => {
+        const user = result.user;
+        const uid = user.uid;
+
+        dispatch(
+          signInAction({
+            isSignIn: true,
+            role: "costomor",
+            uid: uid,
+            username: username,
+            fitMenus: fitMenus,
+          })
+        );
+
+        const userInitialData = {
+          created_at: timestamp,
+          email: "",
+          role: "customer",
+          uid: uid,
+          updated_at: timestamp,
+          username: username,
+          fitMenus: fitMenus,
+        };
+        db.collection("users")
+          .doc(uid)
+          .set(userInitialData)
+          .then(() => {
+            dispatch(push("/"));
+          });
+
+      })
+      .catch((error) => {
+        throw Error(error);
+      });
+  };
+};
+
 export const listenAuthState = () => {
   return async (dispatch) => {
     return auth.onAuthStateChanged((user) => {
@@ -130,7 +177,6 @@ export const signUp = (username, email, password, confirmPassword) => {
       alert("必須項目が未入力です");
       return false;
     }
-    console.log("ok");
 
     if (password !== confirmPassword) {
       alert("パスワードが一致しません。もう一度お試しください");
@@ -177,18 +223,18 @@ export const signOut = () => {
   };
 };
 
-export const fetchUser = (uid) => {
-  return async (dispatch) => {
-    db.collection("users")
-      .doc(uid)
-      .get()
-      .then((snapshot) => {
-        const data = snapshot.data();
+// export const fetchUser = (uid) => {
+//   return async (dispatch) => {
+//     db.collection("users")
+//       .doc(uid)
+//       .get()
+//       .then((snapshot) => {
+//         const data = snapshot.data();
 
-        dispatch(fetchUsersAction(data));
-      });
-  };
-};
+//         dispatch(fetchUsersAction(data));
+//       });
+//   };
+// };
 
 export const saveMenus = (uid, id, newMenus) => {
   return async (dispatch) => {

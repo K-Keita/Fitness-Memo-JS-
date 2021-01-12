@@ -7,43 +7,43 @@ import {
 } from "../components/UIkit/index";
 import FiberManualRecordOutlinedIcon from '@material-ui/icons/FiberManualRecordOutlined';
 import { LinkContainer } from "../components/index";
-import { resetPassword } from "../reducks/users/operations";
+import { anonymousSignIn } from "../reducks/users/operations";
 
-const Reset = () => {
-  const [email, setEmail] = useState("");
+const TestUserSign = () => {
+  const [username, setUsername] = useState("");
 
   const dispatch = useDispatch();
 
-  const fillIn = email !== "";
+  const fillIn = username !== "";
   const addClass = fillIn ? "b-center m-color" : "b-center";
   const icon = <FiberManualRecordOutlinedIcon style={{height: 20}} />
 
-  const inputEmail = useCallback(
+  const inputUsername = useCallback(
     (event) => {
-      setEmail(event.target.value);
+      setUsername(event.target.value);
     },
-    [setEmail]
+    [setUsername]
     );
 
     return (
       <>
       <div className="m-center">
-        <LinkContainerTop label={"パスワード再設定"}
+        <LinkContainerTop label={"テストユーザーログイン"}
       icons={icon}
         />
         <div className={"sign-box sign-border"}>
           <InputText
-            label={"メールアドレス"}
+            label={"ユーザー名"}
             fullWidth={true}
-            onChange={inputEmail}
-            type={"email"}
+            onChange={inputUsername}
+            type={"text"}
             width={"280px"}
           />
           <div className={addClass}>
             <SecondButton
-              label={"再設定用のメールを送る"}
+              label={"テストユーザーでログインする"}
               fullWidth={true}
-              onClick={() => dispatch(resetPassword(email))}
+              onClick={() => dispatch(anonymousSignIn(username))}
             />
           </div>
         </div>
@@ -64,4 +64,4 @@ const Reset = () => {
   );
 };
 
-export default Reset;
+export default TestUserSign;

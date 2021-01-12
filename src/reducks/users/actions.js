@@ -21,6 +21,7 @@ export const signOutAction = () => {
       role: "",
       uid: "",
       username: "",
+      fitMemo: {},
     },
   };
 };

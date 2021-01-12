@@ -2,13 +2,12 @@ import React, { useCallback, useState } from "react";
 import {
   InputText,
   SecondButton,
-  PartsButton,
   LinkContainerTop,
 } from "../components/UIkit/index";
-import {LinkContainer} from '../components/index';
+import { LinkContainer } from "../components/index";
 import { signIn } from "../reducks/users/operations";
 import { useDispatch } from "react-redux";
-import { Divider } from "@material-ui/core";
+import FiberManualRecordOutlinedIcon from '@material-ui/icons/FiberManualRecordOutlined';
 
 const SignIn = () => {
   const [email, setEmail] = useState(""),
@@ -18,6 +17,7 @@ const SignIn = () => {
 
   const fillIn = email !== "" && password !== "";
   const addClass = fillIn ? "b-center m-color" : "b-center";
+  const icon = <FiberManualRecordOutlinedIcon style={{height: 20}} />
 
   const inputEmail = useCallback(
     (event) => {
@@ -34,7 +34,8 @@ const SignIn = () => {
 
   return (
     <div className="m-center">
-      <LinkContainerTop label={"ログイン"} />
+      <LinkContainerTop label={"ログイン"}
+      icons={icon} />
       <div className={"sign-box sign-border"}>
         <InputText
           id={"email"}
@@ -45,7 +46,7 @@ const SignIn = () => {
           type={"email"}
         />
         <InputText
-        id={"password"}
+          id={"password"}
           label={"パスワード"}
           fullWidth={true}
           width={"280px"}
@@ -60,9 +61,24 @@ const SignIn = () => {
           />
         </div>
       </div>
-      <LinkContainer label={"アカウント登録"} buttonLabel={"アカウント登録はこちら"} link={"/signup"} />
-      <LinkContainer label={"パスワード再設定"} buttonLabel={"パスワードをお忘れの方はこちら"} link={"reset"} />
-      <LinkContainer label={"テストログイン"} buttonLabel={"テストユーザーでログインする"} />
+      <LinkContainer
+        label={"アカウント登録"}
+        buttonLabel={"アカウント登録はこちら"}
+        link={"/signup"}
+        icons={icon}
+      />
+      <LinkContainer
+        label={"パスワード再設定"}
+        buttonLabel={"パスワードをお忘れの方はこちら"}
+        link={"reset"}
+        icons={icon}
+      />
+      <LinkContainer
+        label={"テストログイン"}
+        buttonLabel={"テストユーザーでログインする"}
+        icons={icon}
+        link={"/signin/test"}
+      />
     </div>
   );
 };

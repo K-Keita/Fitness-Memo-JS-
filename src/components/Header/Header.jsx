@@ -50,7 +50,7 @@ const Header = () => {
   const classes = useStyles();
 
   const dispatch = useDispatch();
-  const selector = useSelector(state => state);
+  const selector = useSelector((state) => state);
 
   const isSignedIn = getIsSignedIn(selector);
 
@@ -62,14 +62,14 @@ const Header = () => {
           {"Fitness-Memo"}
         </h2>
         {isSignedIn && (
-        <Button
-          className={classes.primary}
-          href="#outlined-buttons"
-          onClick={() => dispatch(signOut())}
-          variant="outlined"
-        >
-          ログアウト
-        </Button>
+          <Button
+            className={classes.primary}
+            href="#outlined-buttons"
+            onClick={() => dispatch(signOut())}
+            variant="outlined"
+          >
+            ログアウト
+          </Button>
         )}
       </div>
       <Divider style={{ margin: "0 auto", width: "95%" }} />

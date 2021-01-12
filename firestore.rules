@@ -5,7 +5,7 @@ service cloud.firestore {
       allow read: if request.auth.uid == userId;
       allow create;
       allow update: if request.auth.uid == userId;
-      allow delete: if request.auth.uid == userId;
+      allow delete: if request.auth.uid != null;
 
       match /dayMenus/{dayMenu} {
         allow read, write: if request.auth.uid == userId;
@@ -13,4 +13,3 @@ service cloud.firestore {
     }
   }
 }
-

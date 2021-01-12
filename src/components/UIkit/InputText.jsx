@@ -14,7 +14,12 @@ const InputText = (props) => {
   const classes = useStyles();
 
   return (
-    <form className={classes.root} style={{width: props.width}} noValidate autoComplete="off">
+    <form
+      className={classes.root}
+      style={{ width: props.width }}
+      noValidate
+      autoComplete="off"
+    >
       <TextField
         fullWidth={props.fullWidth}
         id={props.id}
