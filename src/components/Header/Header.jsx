@@ -1,30 +1,48 @@
 import React from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
+import { Divider } from "@material-ui/core";
 import { green } from "@material-ui/core/colors";
 import { makeStyles } from "@material-ui/core/styles";
-import { useDispatch } from "react-redux";
 import { signOut } from "../../reducks/users/operations";
+import { useDispatch, useSelector } from "react-redux";
+import { getIsSignedIn } from "../../reducks/users/selectors";
 
 const useStyles = makeStyles({
   headPosition: {
+    background: "rgb(223, 252, 252)",
     position: "fixed",
     top: 0,
     left: 0,
     width: "100%",
     zIndex: 10,
   },
-  button: {
-    color: "#fff",
-    cursor: "pointer",
-  },
   mainColor: {
     backgroundColor: green["A400"],
   },
   title: {
-    flexGrow: 1,
-    textAlign: "center",
+    color: green["A400"],
+    margin: " 15px 0 5px 0",
+    minWidth: 350,
+    width: "85%",
+    fontSize: 32,
+  },
+  root: {
+    margin: "0 auto",
+    width: "95%",
+    display: "flex",
+  },
+  primary: {
+    borderColor: green["A400"],
+    borderRadius: 50,
+    height: 40,
+    color: green["A400"],
+    margin: "15px 0 0 0",
+    width: "15%",
+    "&:hover": {
+      height: 45,
+      width: "17%",
+    },
   },
 });
 
@@ -32,22 +50,30 @@ const Header = () => {
   const classes = useStyles();
 
   const dispatch = useDispatch();
+  const selector = useSelector(state => state);
+
+  const isSignedIn = getIsSignedIn(selector);
 
   return (
-      <div className={classes.headPosition}>
-        <AppBar position="static" className={classes.mainColor}>
-          <Toolbar>
-            <div className="midium-space" />
-            <Typography variant="h4" className={classes.title}>
-              Fitness-Memo
-            </Typography>
-            <div className={classes.button} onClick={() => dispatch(signOut())}>
-              ログアウト
-            </div>
-            <div className="midium-space" />
-          </Toolbar>
-        </AppBar>
+    <div className={classes.headPosition}>
+      <div className={classes.root}>
+        <h2 className={classes.title}>
+          <HomeOutlinedIcon fontSize="large" className="icons-align" />
+          {"Fitness-Memo"}
+        </h2>
+        {isSignedIn && (
+        <Button
+          className={classes.primary}
+          href="#outlined-buttons"
+          onClick={() => dispatch(signOut())}
+          variant="outlined"
+        >
+          ログアウト
+        </Button>
+        )}
       </div>
+      <Divider style={{ margin: "0 auto", width: "95%" }} />
+    </div>
   );
 };
 

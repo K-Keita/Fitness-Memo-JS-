@@ -3,9 +3,12 @@ import {
   InputText,
   SecondButton,
   PartsButton,
+  LinkContainerTop,
 } from "../components/UIkit/index";
+import {LinkContainer} from '../components/index';
 import { signIn } from "../reducks/users/operations";
 import { useDispatch } from "react-redux";
+import { Divider } from "@material-ui/core";
 
 const SignIn = () => {
   const [email, setEmail] = useState(""),
@@ -30,19 +33,22 @@ const SignIn = () => {
   );
 
   return (
-    <>
+    <div className="m-center">
+      <LinkContainerTop label={"ログイン"} />
       <div className={"sign-box sign-border"}>
-        <h2 className={"sign-title"}>ログイン</h2>
-        <div className={"midium-space"} />
         <InputText
+          id={"email"}
           label={"メールアドレス"}
           fullWidth={true}
+          width={"280px"}
           onChange={inputEmail}
           type={"email"}
         />
         <InputText
+        id={"password"}
           label={"パスワード"}
           fullWidth={true}
+          width={"280px"}
           onChange={inputPassword}
           type={"password"}
         />
@@ -54,17 +60,10 @@ const SignIn = () => {
           />
         </div>
       </div>
-      <div className="sign-box">
-        <PartsButton
-          label={"・アカウントの新規登録はこちら"}
-          path={"/signup"}
-        />
-        <PartsButton
-          label={"・パスワードをお忘れの方はこちら"}
-          path={"/reset"}
-        />
-      </div>
-    </>
+      <LinkContainer label={"アカウント登録"} buttonLabel={"アカウント登録はこちら"} link={"/signup"} />
+      <LinkContainer label={"パスワード再設定"} buttonLabel={"パスワードをお忘れの方はこちら"} link={"reset"} />
+      <LinkContainer label={"テストログイン"} buttonLabel={"テストユーザーでログインする"} />
+    </div>
   );
 };
 

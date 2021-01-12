@@ -90,7 +90,7 @@ const EditList = () => {
 
   useEffect(() => {
     setFitMemo(fitMenus[id]);
-  }, [fitMenus[id]]);
+  }, [fitMenus, id]);
 
   return (
     <>
@@ -120,6 +120,7 @@ const EditList = () => {
           onChange={inputvalue}
           type={"text"}
           value={value}
+          width={"260px"}
         />
         <div className={isEmpty}>
           <SecondButton

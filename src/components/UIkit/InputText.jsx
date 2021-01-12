@@ -6,7 +6,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
       margin: theme.spacing(1),
-      width: "260px",
     },
   },
 }));
@@ -15,10 +14,10 @@ const InputText = (props) => {
   const classes = useStyles();
 
   return (
-    <form className={classes.root} noValidate autoComplete="off">
+    <form className={classes.root} style={{width: props.width}} noValidate autoComplete="off">
       <TextField
         fullWidth={props.fullWidth}
-        id="outlined-basic"
+        id={props.id}
         label={props.label}
         onChange={props.onChange}
         type={props.type}

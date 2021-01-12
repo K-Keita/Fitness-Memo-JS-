@@ -1,7 +1,5 @@
 import React from "react";
 import { OnedayList, TableBox } from "../components/index";
-import { LinkContainerTop } from "../components/UIkit/index";
-import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
 import { LinkContainer } from "../components/index";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import EditIcon from "@material-ui/icons/Edit";
@@ -16,11 +14,7 @@ const dateId = String(year) + String(month) + String(day);
 const Home = () => {
   return (
     <>
-      <LinkContainerTop
-        icons={<HomeOutlinedIcon fontSize="large" className="icons-align" />}
-        label={"Fitness-Memo"}
-      />
-      <div className="midium-space" />
+      <div style={{ height: 20 }} />
       <div className="d-flex">
         <div className="midium-width">
           <TableBox />

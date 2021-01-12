@@ -1,9 +1,9 @@
 import React from "react";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import EditIcon from "@material-ui/icons/Edit";
-import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
 import ListAltIcon from "@material-ui/icons/ListAlt";
 import { LinkContainer, TransferList } from "../components/index";
+import { PartsButton } from "../components/UIkit/index";
 
 const RegistrationList = () => {
   let id = window.location.pathname.split("/regist")[1];
@@ -14,13 +14,9 @@ const RegistrationList = () => {
 
   return (
     <>
-      <LinkContainer
-        icons={<HomeOutlinedIcon fontSize="large" className="icons-align" />}
-        label={"Fitness-Memo"}
-        link={"/"}
-        buttonLabel={"ホームに戻る"}
-        arr={false}
-      />
+      <div className="l-flex">
+        <PartsButton label={"ホームに戻る"} path={"/"} />
+      </div>
       <LinkContainer
         icons={<AddCircleOutlineIcon className="icons-align" />}
         label={"トレーニングメニューを登録する"}

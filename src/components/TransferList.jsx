@@ -122,7 +122,7 @@ const TransferList = (props) => {
     const registArr = left;
     const arr = [];
     registArr.map((value) => {
-      arr.push(value.name);
+      return arr.push(value.name);
     });
 
     const partsArr = [];
@@ -140,11 +140,11 @@ const TransferList = (props) => {
 
   useEffect(() => {
     setRight(partsMenu[id]);
-  }, [id]);
+  }, [partsMenu, id]);
 
   useEffect(() => {
     dispatch(fetchDayMenus(uid, dateId, date));
-  }, [dateId]);
+  }, [dispatch, dateId, uid]);
 
   useEffect(() => {
     setLeft(dayMenu);

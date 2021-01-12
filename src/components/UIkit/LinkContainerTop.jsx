@@ -6,7 +6,7 @@ import { makeStyles } from "@material-ui/core";
 const useStyles = makeStyles({
   root: {
     color: green["A400"],
-    marginBottom: 0,
+    margin: " 10px 0 0 0",
     minWidth: 350,
   },
 });

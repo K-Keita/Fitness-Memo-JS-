@@ -1,18 +1,19 @@
 .b-center {
   width: 280px;
+  text-align: center;
   margin: 10px auto;
 }
 
 .b-position {
   height: 35px;
-  margin: 20px auto 0;
+  margin: 20px 0;
 }
 
 .container-width {
   width: 90%;
   max-width: 1000px;
   min-width: 360px;
-  margin: 70px auto 20px auto;
+  margin: 60px auto 20px auto;
 }
 
 .color {
@@ -84,6 +85,14 @@
   background-color: mintcream;
 }
 
+.m-center {
+  width: 60%;
+  min-width: 350px;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
 .midium-width {
   width: 60%;
 }
@@ -94,20 +103,21 @@
 
 .sign {
   &-border {
-    border: 2px solid gray;
-    box-sizing: border-box;
+    padding: 5px;
+    margin-bottom: 30px;
   }
   &-box {
     width: 300px;
-    margin: 10px auto;
+    margin: 5px auto;
   }
   &-title {
     height: 40px;
     line-height: 40px;
-    padding: 8px;
-    margin: 0;
-    color: white;
-    background-color: rgb(38, 240, 139);
+    padding: 4px;
+    text-align: center;
+    margin: 0 auto;
+    color: rgb(38, 240, 139);
+    // background-color: rgb(38, 240, 139);
   }
 }
 

@@ -50,7 +50,7 @@ const OnedayList = (props) => {
       .catch(() => {
         console.log(Error);
       });
-  }, []);
+  }, [id, uid]);
 
   return (
     <ListPaper

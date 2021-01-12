@@ -18,7 +18,7 @@ const LinkContainer = (props) => {
 
   useEffect(() => {
     setConfirmArr(arr);
-  }, []);
+  }, [arr]);
 
   const isArr = rows.map((row, index) => (
     <PartsButton label={row.name} key={String(index)} path={row.link} />

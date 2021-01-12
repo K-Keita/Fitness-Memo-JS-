@@ -3,8 +3,9 @@ import { useDispatch } from "react-redux";
 import {
   InputText,
   SecondButton,
-  PartsButton,
+  LinkContainerTop
 } from "../components/UIkit/index";
+import {LinkContainer} from '../components/index';
 import { resetPassword } from "../reducks/users/operations";
 
 const Reset = () => {
@@ -24,14 +25,15 @@ const Reset = () => {
 
   return (
     <>
+    <div className="m-center">
+      <LinkContainerTop label={"パスワード再設定"} />
       <div className={"sign-box sign-border"}>
-        <h2 className={"sign-title"}>パスワード再設定</h2>
-        <div className={"midium-space"} />
         <InputText
           label={"メールアドレス"}
           fullWidth={true}
           onChange={inputEmail}
           type={"email"}
+          width={"280px"}
         />
         <div className={addClass}>
           <SecondButton
@@ -41,9 +43,10 @@ const Reset = () => {
           />
         </div>
       </div>
-      <div className="sign-box">
-        <PartsButton label={"・ログイン画面に戻る"} path={"/signin"} />
-      </div>
+      <LinkContainer label={"アカウント登録"} buttonLabel={"アカウント登録はこちら"} link={"/signup"} />
+      <LinkContainer label={"ログイン"} buttonLabel={"アカウントをお持ちの方はこちら"} link={"/signin"} />
+      <LinkContainer label={"テストログイン"} buttonLabel={"テストユーザーでログインする"} />
+    </div>
     </>
   );
 };

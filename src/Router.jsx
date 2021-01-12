@@ -8,7 +8,6 @@ import {
   SignUp,
   SignIn,
   Reset,
-  Top,
 } from "./templates/index";
 import Auth from "./Auth";
 
@@ -18,7 +17,6 @@ const Router = () => {
       <Route exact path={"/reset"} component={Reset} />
       <Route exact path={"/signin"} component={SignIn} />
       <Route exact path={"/signup"} component={SignUp} />
-      <Route exact path={"/top"} component={Top} />
       <Auth>
         <Route exact path={"(/)?"} component={Home} />
         <Route exact path={"/list"} component={WeekLists} />

@@ -34,11 +34,11 @@ const useStyles = makeStyles({
   },
   text: {
     padding: 6,
-    textAlign: "left"
-  }
+    textAlign: "left",
+  },
 });
 
-const ListPaper = (props) => {
+const ListPaper = React.memo((props) => {
   const classes = useStyles();
 
   const check = props.check ? "block" : "d-none";
@@ -85,6 +85,6 @@ const ListPaper = (props) => {
       </List>
     </Card>
   );
-};
+});
 
 export default ListPaper;

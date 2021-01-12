@@ -1,20 +1,16 @@
 import React from "react";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import EditIcon from "@material-ui/icons/Edit";
-import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
 import ListAltIcon from "@material-ui/icons/ListAlt";
 import { EditList, LinkContainer } from "../components";
+import { PartsButton } from "../components/UIkit/index";
 
 const EditMenuList = () => {
   return (
     <>
-      <LinkContainer
-        icons={<HomeOutlinedIcon fontSize="large" className="icons-align" />}
-        label={"Fitness-Memo"}
-        link={"/"}
-        buttonLabel={"ホームに戻る"}
-        arr={false}
-      />
+      <div className="l-flex">
+        <PartsButton label={"ホームに戻る"} path={"/"} />
+      </div>
       <LinkContainer
         icons={<EditIcon className={"icons-align"} />}
         label={"メニューリストを編集する"}

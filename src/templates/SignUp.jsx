@@ -4,7 +4,9 @@ import {
   InputText,
   SecondButton,
   PartsButton,
+  LinkContainerTop
 } from "../components/UIkit/index";
+import {LinkContainer} from '../components/index';
 import { signUp } from "../reducks/users/operations";
 
 const SignUp = () => {
@@ -49,50 +51,50 @@ const SignUp = () => {
 
   return (
     <>
+    <div className="m-center">
+      <LinkContainerTop label={"アカウント登録"} />
       <div className={"sign-box sign-border"}>
-        <h2 className={"sign-title"}>アカウント登録</h2>
-        <div className={"midium-space"} />
-        <InputText
+      <InputText
           label={"ユーザー名"}
           fullWidth={true}
           onChange={inputUsername}
           type={"text"}
+          width={"280px"}
         />
         <InputText
           label={"メールアドレス"}
           fullWidth={true}
           onChange={inputEmail}
           type={"email"}
+          width={"280px"}
         />
         <InputText
           label={"パスワード"}
           fullWidth={true}
           onChange={inputPassword}
           type={"password"}
+          width={"280px"}
         />
         <InputText
           label={"パスワード(再確認)"}
           fullWidth={true}
           onChange={inputConfirmPassword}
           type={"password"}
+          width={"280px"}
         />
         <div className={addClass}>
           <SecondButton
             label={"アカウント登録"}
             fullWidth={true}
-            onClick={() =>
-              dispatch(signUp(username, email, password, confirmPassword))
-            }
+            onClick={() => dispatch(signUp(username, email, password, confirmPassword))}
           />
         </div>
       </div>
-      <div className="sign-box">
-        <PartsButton
-          label={"・アカウントをお持ちの方はこちら"}
-          path={"/signin"}
-        />
-      </div>
-      </>
+      <LinkContainer label={"ログイン"} buttonLabel={"アカウントをお持ちの方はこちら"} link={"/signin"} />
+      <LinkContainer label={"パスワード再設定"} buttonLabel={"パスワードをお忘れの方はこちら"} link={"/reset"} />
+      <LinkContainer label={"テストログイン"} buttonLabel={"テストユーザーでログインする"} />
+    </div>
+    </>
   );
 };
 

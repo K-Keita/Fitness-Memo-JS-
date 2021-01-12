@@ -54,13 +54,11 @@ const TableField = React.memo((props) => {
           setTraningDay(data.date);
         });
       });
-  }, [dayMenu]);
+  }, [date1, dayMenu, props.part, uid]);
 
   return (
     <TableRow style={{ height: "30px" }}>
-      <TableCell
-        className={classes.tableCell_a}
-      >
+      <TableCell className={classes.tableCell_a}>
         <div className={colorBox} style={{ marginRight: "8px" }} />
         {props.name}
       </TableCell>

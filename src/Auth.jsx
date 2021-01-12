@@ -14,7 +14,7 @@ const Auth = ({ children }) => {
     if (!isSignedIn) {
       dispatch(listenAuthState());
     }
-  }, []);
+  }, [dispatch, isSignedIn]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
