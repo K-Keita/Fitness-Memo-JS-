@@ -15,7 +15,7 @@ const Reset = () => {
   const dispatch = useDispatch();
 
   const fillIn = email !== "";
-  const addClass = fillIn ? "b-center m-color" : "b-center";
+  const addClass = fillIn ? "b-center color_clicked" : "b-center";
   const icon = <FiberManualRecordOutlinedIcon style={{height: 20}} />
 
   const inputEmail = useCallback(
@@ -27,7 +27,7 @@ const Reset = () => {
 
     return (
       <>
-      <div className="m-center">
+      <div className="sign-container">
         <LinkContainerTop label={"パスワード再設定"}
       icons={icon}
         />

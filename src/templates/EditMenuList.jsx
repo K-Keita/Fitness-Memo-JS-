@@ -8,12 +8,12 @@ import { PartsButton } from "../components/UIkit/index";
 const EditMenuList = () => {
   return (
     <>
-      <div className="l-flex">
+      <div className="d-flex">
         <PartsButton label={"ホームに戻る"} path={"/"} />
       </div>
       <LinkContainer
         icons={<EditIcon className={"icons-align"} />}
-        label={"メニューリストを編集する"}
+        label={"メニューリストの編集"}
         link={"/edit"}
         arr={true}
       />

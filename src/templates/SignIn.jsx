@@ -16,7 +16,7 @@ const SignIn = () => {
   const dispatch = useDispatch();
 
   const fillIn = email !== "" && password !== "";
-  const addClass = fillIn ? "b-center m-color" : "b-center";
+  const addClass = fillIn ? "b-center color_clicked" : "b-center";
   const icon = <FiberManualRecordOutlinedIcon style={{height: 20}} />
 
   const inputEmail = useCallback(
@@ -33,7 +33,7 @@ const SignIn = () => {
   );
 
   return (
-    <div className="m-center">
+    <div className="sign-container">
       <LinkContainerTop label={"ログイン"}
       icons={icon} />
       <div className={"sign-box sign-border"}>

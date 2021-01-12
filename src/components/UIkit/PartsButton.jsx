@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   primary: {
     borderColor: green["A400"],
     borderRadius: 50,
-    color: green["A400"],
+    color: green["500"],
     margin: "5px",
     "&:hover": {
       height: "110%",

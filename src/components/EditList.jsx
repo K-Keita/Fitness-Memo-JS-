@@ -23,8 +23,8 @@ const EditList = () => {
   }
 
   const selectItems = checked.length === 0;
-  const classes = selectItems ? "sign-box" : "sign-box m-color";
-  const isEmpty = value === "" ? "b-position" : "b-position m-color";
+  const classes = selectItems ? "sign-box" : "sign-box color_clicked";
+  const isEmpty = value === "" ? "b-position" : "b-position color_clicked";
 
   const inputvalue = (event) => {
     setvalue(event.target.value);
@@ -113,7 +113,7 @@ const EditList = () => {
           }}
         />
       </div>
-      <div className="input-center d-flex">
+      <div className="input-center d-flex_between">
         <InputText
           fullWidth={true}
           label={"新規メニュー"}

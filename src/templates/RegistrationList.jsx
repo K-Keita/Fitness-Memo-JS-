@@ -19,7 +19,7 @@ const RegistrationList = () => {
       </div>
       <LinkContainer
         icons={<AddCircleOutlineIcon className="icons-align" />}
-        label={"トレーニングメニューを登録する"}
+        label={"トレーニングメニューを登録"}
         link={"/regist"}
         arr={true}
       />
@@ -27,7 +27,7 @@ const RegistrationList = () => {
       <div className="midium-space" />
       <LinkContainer
         icons={<EditIcon className="icons-align" />}
-        label={"メニューリストを編集する"}
+        label={"メニューリストの編集"}
         link={"/edit"}
         arr={true}
       />

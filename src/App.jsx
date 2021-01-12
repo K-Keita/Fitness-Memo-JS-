@@ -6,7 +6,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <main className="container-width">
+      <main className="main">
         <Router />
       </main>
     </>

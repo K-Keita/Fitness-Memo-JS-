@@ -9,7 +9,7 @@
   margin: 20px 0;
 }
 
-.container-width {
+.main {
   width: 90%;
   max-width: 1000px;
   min-width: 360px;
@@ -38,12 +38,19 @@
   &_shoulder {
     background-color: #ce93d8;
   }
+  &_clicked {
+    background-color: #b9f6ca;
+  }
 }
 
 .d-flex {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+
+  &_between {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 }
 
 .day-change {
@@ -52,18 +59,18 @@
   line-height: 25px;
   width: 50px;
   margin: 0 16px;
-  cursor: pointer;
   user-select: none;
+  cursor: pointer;
 }
 
 .d-none {
   display: none;
-}
 
-.d-none__block {
-  display: none;
-  width: 100%;
-  max-width: 400px;
+  &__block {
+    display: none;
+    width: 100%;
+    max-width: 400px;
+  }
 }
 
 .icons-align {
@@ -77,23 +84,7 @@
   margin: 0 auto;
 }
 
-.l-flex {
-  display: flex;
-}
-
-.m-color {
-  background-color: mintcream;
-}
-
-.m-center {
-  width: 60%;
-  min-width: 350px;
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 10px 0;
-}
-
-.midium-width {
+.table-container {
   width: 60%;
 }
 
@@ -110,6 +101,13 @@
     width: 300px;
     margin: 5px auto;
   }
+  &-container {
+    width: 60%;
+    min-width: 350px;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 10px 0;
+  }
   &-title {
     height: 40px;
     line-height: 40px;
@@ -117,21 +115,21 @@
     text-align: center;
     margin: 0 auto;
     color: rgb(38, 240, 139);
-    // background-color: rgb(38, 240, 139);
   }
 }
 
-.small-width__none {
+.list-container {
   width: 38%;
 }
 
 @media(max-width: 760px) {
-  .container-width {
+  .main {
     width: 95%;
   }
 
-  .midium-width {
-    width: 100%;
+  .table-container {
+    width: 90%;
+    margin: 0 auto;
   }
 
   .d-none__block {
@@ -139,28 +137,27 @@
     margin: 0 auto;
   }
 
-  .small-width__none {
-    width: 95%;
+  .list-container {
+    width: 100%;
     margin: 0 auto;
   }
 
-  .min_midium-width {
+  .transfer-container {
     width: 50%;
     margin: 15px auto;
   }
 }
 
 @media(max-width: 550px) {
-  .container-width {
+  .main {
     width: 98%;
+  }
+
+  .table-container {
+    width: 100%;
   }
 
   .midium-space {
     margin: 5px;
-  }
-
-  .min_midium-width {
-    width: 60%;
-    margin: 15px auto;
   }
 }

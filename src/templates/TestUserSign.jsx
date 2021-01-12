@@ -15,7 +15,7 @@ const TestUserSign = () => {
   const dispatch = useDispatch();
 
   const fillIn = username !== "";
-  const addClass = fillIn ? "b-center m-color" : "b-center";
+  const addClass = fillIn ? "b-center color_clicked" : "b-center";
   const icon = <FiberManualRecordOutlinedIcon style={{height: 20}} />
 
   const inputUsername = useCallback(
@@ -27,7 +27,7 @@ const TestUserSign = () => {
 
     return (
       <>
-      <div className="m-center">
+      <div className="sign-container">
         <LinkContainerTop label={"テストユーザーログイン"}
       icons={icon}
         />

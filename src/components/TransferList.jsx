@@ -73,9 +73,9 @@ const TransferList = (props) => {
 
   const id = String(props.id);
 
-  const addClass = !isRegist ? "sign-box" : "sign-box m-color";
-  const leftClick = leftChecked.length === 0 ? "" : "m-color";
-  const rightClick = rightChecked.length === 0 ? "" : "m-color";
+  const addClass = !isRegist ? "sign-box" : "sign-box color_clicked";
+  const leftClick = leftChecked.length === 0 ? "" : "color_clicked";
+  const rightClick = rightChecked.length === 0 ? "" : "color_clicked";
 
   //日付を一日前
   const prevdays = () => {
@@ -152,7 +152,7 @@ const TransferList = (props) => {
 
   return (
     <>
-      <div className="min_midium-width">
+      <div className="transfer-container">
         <Grid
           alignItems="center"
           container

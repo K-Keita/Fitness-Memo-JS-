@@ -22,7 +22,7 @@ const SignUp = () => {
     email !== "" &&
     password !== "" &&
     confirmPassword !== "";
-  const addClass = fillIn ? "b-center m-color" : "b-center";
+  const addClass = fillIn ? "b-center color_clicked" : "b-center";
   const icon = <FiberManualRecordOutlinedIcon style={{height: 20}} />
 
   const inputUsername = useCallback(
@@ -52,7 +52,7 @@ const SignUp = () => {
 
   return (
     <>
-      <div className="m-center">
+      <div className="sign-container">
         <LinkContainerTop label={"アカウント登録"}
         icons={icon}
         />
@@ -101,12 +101,6 @@ const SignUp = () => {
           link={"/signin"}
           icons={icon}
           />
-        {/* <LinkContainer
-          label={"パスワード再設定"}
-          buttonLabel={"パスワードをお忘れの方はこちら"}
-          link={"/reset"}
-          icons={icon}
-          /> */}
         <LinkContainer
           label={"テストログイン"}
           buttonLabel={"テストユーザーでログインする"}

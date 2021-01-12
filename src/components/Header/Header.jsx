@@ -23,25 +23,24 @@ const useStyles = makeStyles({
   title: {
     color: green["A400"],
     margin: " 15px 0 5px 0",
-    minWidth: 350,
-    width: "85%",
-    fontSize: 32,
+    fontSize: 30,
   },
   root: {
     margin: "0 auto",
     width: "95%",
+    minWidth: 360,
     display: "flex",
+    justifyContent: "space-between"
   },
   primary: {
     borderColor: green["A400"],
     borderRadius: 50,
-    height: 40,
-    color: green["A400"],
+    height: 35,
+    color: green["700"],
+    fontSize: 12,
     margin: "15px 0 0 0",
-    width: "15%",
     "&:hover": {
       height: 45,
-      width: "17%",
     },
   },
 });

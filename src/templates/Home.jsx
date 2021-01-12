@@ -15,23 +15,23 @@ const Home = () => {
   return (
     <>
       <div style={{ height: 20 }} />
-      <div className="d-flex">
-        <div className="midium-width">
+      <div className="d-flex_between">
+        <div className="table-container">
           <TableBox />
         </div>
-        <div className="small-width__none">
+        <div className="list-container">
           <OnedayList title={"今日のトレーニング"} dateId={dateId} />
         </div>
       </div>
       <LinkContainer
         icons={<AddCircleOutlineIcon className="icons-align" />}
-        label={"今日のトレーニングを登録"}
+        label={"トレーニングメニューを登録"}
         link={"/regist"}
         arr={true}
       />
       <LinkContainer
         icons={<EditIcon className="icons-align" />}
-        label={"メニューリストを編集する"}
+        label={"メニューリストの編集"}
         link={"/edit"}
         arr={true}
       />
