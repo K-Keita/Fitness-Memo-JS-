@@ -5,7 +5,7 @@ import {
   SecondButton,
   LinkContainerTop,
 } from "../components/UIkit/index";
-import FiberManualRecordOutlinedIcon from '@material-ui/icons/FiberManualRecordOutlined';
+import FiberManualRecordOutlinedIcon from "@material-ui/icons/FiberManualRecordOutlined";
 import { LinkContainer } from "../components/index";
 import { resetPassword } from "../reducks/users/operations";
 
@@ -16,21 +16,19 @@ const Reset = () => {
 
   const fillIn = email !== "";
   const addClass = fillIn ? "b-center color_clicked" : "b-center";
-  const icon = <FiberManualRecordOutlinedIcon style={{height: 20}} />
+  const icon = <FiberManualRecordOutlinedIcon style={{ height: 20 }} />;
 
   const inputEmail = useCallback(
     (event) => {
       setEmail(event.target.value);
     },
     [setEmail]
-    );
+  );
 
-    return (
-      <>
+  return (
+    <>
       <div className="sign-container">
-        <LinkContainerTop label={"パスワード再設定"}
-      icons={icon}
-        />
+        <LinkContainerTop label={"パスワード再設定"} icons={icon} />
         <div className={"sign-box sign-border"}>
           <InputText
             label={"メールアドレス"}
@@ -52,13 +50,13 @@ const Reset = () => {
           buttonLabel={"アカウント登録はこちら"}
           link={"/signup"}
           icons={icon}
-          />
+        />
         <LinkContainer
           label={"ログイン"}
           buttonLabel={"アカウントをお持ちの方はこちら"}
           link={"/signin"}
           icons={icon}
-          />
+        />
       </div>
     </>
   );

@@ -8,7 +8,7 @@ import {
   SignUp,
   SignIn,
   Reset,
-  TestUserSign
+  TestUserSign,
 } from "./templates/index";
 import Auth from "./Auth";
 

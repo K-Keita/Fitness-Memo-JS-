@@ -7,7 +7,7 @@ import {
 import { LinkContainer } from "../components/index";
 import { signIn } from "../reducks/users/operations";
 import { useDispatch } from "react-redux";
-import FiberManualRecordOutlinedIcon from '@material-ui/icons/FiberManualRecordOutlined';
+import FiberManualRecordOutlinedIcon from "@material-ui/icons/FiberManualRecordOutlined";
 
 const SignIn = () => {
   const [email, setEmail] = useState(""),
@@ -17,7 +17,7 @@ const SignIn = () => {
 
   const fillIn = email !== "" && password !== "";
   const addClass = fillIn ? "b-center color_clicked" : "b-center";
-  const icon = <FiberManualRecordOutlinedIcon style={{height: 20}} />
+  const icon = <FiberManualRecordOutlinedIcon style={{ height: 20 }} />;
 
   const inputEmail = useCallback(
     (event) => {
@@ -34,8 +34,7 @@ const SignIn = () => {
 
   return (
     <div className="sign-container">
-      <LinkContainerTop label={"ログイン"}
-      icons={icon} />
+      <LinkContainerTop label={"ログイン"} icons={icon} />
       <div className={"sign-box sign-border"}>
         <InputText
           id={"email"}

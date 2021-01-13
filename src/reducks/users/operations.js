@@ -31,6 +31,8 @@ createArr(chest, fitMenus.chest);
 createArr(back, fitMenus.back);
 createArr(reg, fitMenus.reg);
 
+const usersRef = db.collection("users");
+
 //匿名認証
 export const anonymousSignIn = (username) => {
   return async (dispatch) => {
@@ -64,13 +66,12 @@ export const anonymousSignIn = (username) => {
           username: username,
           fitMenus: fitMenus,
         };
-        db.collection("users")
+        usersRef
           .doc(uid)
           .set(userInitialData)
           .then(() => {
             dispatch(push("/"));
           });
-
       })
       .catch((error) => {
         throw Error(error);
@@ -84,13 +85,13 @@ export const listenAuthState = () => {
       if (user) {
         const uid = user.uid;
 
-        db.collection("users")
+        usersRef
           .doc(uid)
           .get()
           .then((snapshot) => {
             const data = snapshot.data();
 
-            dispatch(
+              dispatch(
               signInAction({
                 isSignIn: true,
                 role: data.role,
@@ -142,7 +143,7 @@ export const signIn = (email, password) => {
       if (user) {
         const uid = user.uid;
 
-        db.collection("users")
+        usersRef
           .doc(uid)
           .get()
           .then((snapshot) => {
@@ -160,8 +161,12 @@ export const signIn = (email, password) => {
 
             dispatch(push("/"));
           });
+      } else {
+        alert ("ユーザーが存在しません。もう一度お試しください")
       }
-    });
+    }).catch((error) => {
+      throw new Error(error)
+    })
   };
 };
 
@@ -202,7 +207,7 @@ export const signUp = (username, email, password, confirmPassword) => {
             fitMenus: fitMenus,
           };
 
-          db.collection("users")
+          usersRef
             .doc(uid)
             .set(userInitialData)
             .then(() => {
@@ -223,19 +228,6 @@ export const signOut = () => {
   };
 };
 
-// export const fetchUser = (uid) => {
-//   return async (dispatch) => {
-//     db.collection("users")
-//       .doc(uid)
-//       .get()
-//       .then((snapshot) => {
-//         const data = snapshot.data();
-
-//         dispatch(fetchUsersAction(data));
-//       });
-//   };
-// };
-
 export const saveMenus = (uid, id, newMenus) => {
   return async (dispatch) => {
     await db
@@ -247,7 +239,7 @@ export const saveMenus = (uid, id, newMenus) => {
 
         data.fitMenus[id] = newMenus;
 
-        db.collection("users")
+        usersRef
           .doc(uid)
           .set(data, { merge: true })
           .then(() => {

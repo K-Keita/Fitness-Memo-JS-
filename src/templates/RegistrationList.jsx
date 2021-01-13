@@ -14,7 +14,7 @@ const RegistrationList = () => {
 
   return (
     <>
-      <div className="l-flex">
+      <div className="d-flex">
         <PartsButton label={"ホームに戻る"} path={"/"} />
       </div>
       <LinkContainer

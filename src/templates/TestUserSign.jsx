@@ -5,7 +5,7 @@ import {
   SecondButton,
   LinkContainerTop,
 } from "../components/UIkit/index";
-import FiberManualRecordOutlinedIcon from '@material-ui/icons/FiberManualRecordOutlined';
+import FiberManualRecordOutlinedIcon from "@material-ui/icons/FiberManualRecordOutlined";
 import { LinkContainer } from "../components/index";
 import { anonymousSignIn } from "../reducks/users/operations";
 
@@ -16,21 +16,19 @@ const TestUserSign = () => {
 
   const fillIn = username !== "";
   const addClass = fillIn ? "b-center color_clicked" : "b-center";
-  const icon = <FiberManualRecordOutlinedIcon style={{height: 20}} />
+  const icon = <FiberManualRecordOutlinedIcon style={{ height: 20 }} />;
 
   const inputUsername = useCallback(
     (event) => {
       setUsername(event.target.value);
     },
     [setUsername]
-    );
+  );
 
-    return (
-      <>
+  return (
+    <>
       <div className="sign-container">
-        <LinkContainerTop label={"テストユーザーログイン"}
-      icons={icon}
-        />
+        <LinkContainerTop label={"テストユーザーログイン"} icons={icon} />
         <div className={"sign-box sign-border"}>
           <InputText
             label={"ユーザー名"}
@@ -52,13 +50,13 @@ const TestUserSign = () => {
           buttonLabel={"アカウント登録はこちら"}
           link={"/signup"}
           icons={icon}
-          />
+        />
         <LinkContainer
           label={"ログイン"}
           buttonLabel={"アカウントをお持ちの方はこちら"}
           link={"/signin"}
           icons={icon}
-          />
+        />
       </div>
     </>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import green from '@material-ui/core/colors/green';
+import green from "@material-ui/core/colors/green";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -11,14 +11,19 @@ const useStyles = makeStyles((theme) => ({
   },
   textField: {
     backgroundColor: "rgb(223, 252, 252)",
-  }
+  },
 }));
 
-const InputText = (props) => {
+const InputText = React.memo((props) => {
   const classes = useStyles();
+
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+  }
 
   return (
     <form
+    onSubmit={onFormSubmit}
       className={classes.root}
       style={{ width: props.width }}
       noValidate
@@ -36,6 +41,6 @@ const InputText = (props) => {
       />
     </form>
   );
-};
+});
 
 export default InputText;

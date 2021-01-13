@@ -23,7 +23,7 @@ for (let i = 0; i < 7; i++) {
 const WeekLists = () => {
   return (
     <>
-      <div className="l-flex">
+      <div className="d-flex">
         <PartsButton label={"ホームに戻る"} path={"/"} />
       </div>
       <LinkContainerTop

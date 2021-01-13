@@ -2,16 +2,17 @@ import { db, FirebaseTimestamp } from "../../firebase/index";
 import { fetchDayMenusAction, emptyMenusAction } from "./actions";
 import { push } from "connected-react-router";
 
+const usersRef = db.collection("users");
+
 export const fetchDayMenus = (uid, dateId, date) => {
   const id = String(dateId);
   return async (dispatch) => {
-    await db
-      .collection("users")
+    const snapshot = usersRef
       .doc(uid)
       .collection("dayMenus")
       .doc(id)
       .get()
-      .then((snapshot) => {
+
         if (!snapshot.exists) {
           dispatch(
             emptyMenusAction({
@@ -23,8 +24,8 @@ export const fetchDayMenus = (uid, dateId, date) => {
 
           dispatch(fetchDayMenusAction(data));
         }
-      })
-      .catch((error) => {
+
+      snapshot.catch((error) => {
         throw Error(error);
       });
   };
@@ -47,8 +48,7 @@ export const saveDayMenus = (items, days, date, uid, dateId) => {
       update_at: timestamp,
     };
 
-    await db
-      .collection("users")
+    await usersRef
       .doc(uid)
       .collection("dayMenus")
       .doc(dateId)

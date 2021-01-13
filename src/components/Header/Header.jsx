@@ -30,7 +30,7 @@ const useStyles = makeStyles({
     width: "95%",
     minWidth: 360,
     display: "flex",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
   },
   primary: {
     borderColor: green["A400"],
