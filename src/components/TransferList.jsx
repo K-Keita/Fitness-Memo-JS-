@@ -32,8 +32,8 @@ let year;
 let month;
 let day;
 let date = `${todayYear}/${todayMonth}/${todayDate}`;
-let titleDay = `${todayMonth}/${todayDate}`;
 let dateId = String(todayYear) + String(todayMonth) + String(todayDate);
+let titleDay = `${todayMonth}/${todayDate}`;
 
 const not = (a, b) => {
   return a.filter((value) => b.indexOf(value) === -1);
@@ -43,15 +43,6 @@ const intersection = (a, b) => {
   return a.filter((value) => b.indexOf(value) !== -1);
 };
 
-//日付の変更
-const changeDay = () => {
-  year = days.getFullYear();
-  month = days.getMonth() + 1;
-  day = days.getDate();
-  date = `${year}/${month}/${day}`;
-  dateId = String(year) + String(month) + String(day);
-  titleDay = `${month}/${day}`;
-};
 
 const TransferList = (props) => {
   const classes = useStyles();
@@ -59,14 +50,17 @@ const TransferList = (props) => {
   const selector = useSelector((state) => state);
 
   const dayMenu = getOnedayMenu(selector),
-    partsMenu = getFitnessMenu(selector),
-    uid = getUserId(selector);
+  partsMenu = getFitnessMenu(selector),
+  uid = getUserId(selector);
+
+  //日付の変更
 
   const [checked, setChecked] = useState([]),
-    [left, setLeft] = useState([]),
-    [right, setRight] = useState([]),
-    [dateTitle, setDateTitle] = useState(titleDay),
-    [isRegist, setIsRegist] = useState(false);
+  [left, setLeft] = useState([]),
+  [right, setRight] = useState([]),
+  [da, setDa] = useState(dateId),
+  [dateTitle, setDateTitle] = useState(titleDay),
+  [isRegist, setIsRegist] = useState(false);
 
   const leftChecked = intersection(checked, left);
   const rightChecked = intersection(checked, right);
@@ -76,6 +70,16 @@ const TransferList = (props) => {
   const addClass = !isRegist ? "sign-box" : "sign-box color_clicked";
   const leftClick = leftChecked.length === 0 ? "" : "color_clicked";
   const rightClick = rightChecked.length === 0 ? "" : "color_clicked";
+
+  const changeDay = () => {
+    year = days.getFullYear();
+    month = days.getMonth() + 1;
+    day = days.getDate();
+    date = `${year}/${month}/${day}`;
+    dateId = String(year) + String(month) + String(day);
+    titleDay = `${month}/${day}`;
+    setDa(dateId)
+  };
 
   //日付を一日前
   const prevdays = () => {
@@ -143,8 +147,8 @@ const TransferList = (props) => {
   }, [partsMenu, id]);
 
   useEffect(() => {
-    dispatch(fetchDayMenus(uid, dateId, date));
-  }, [dispatch, dateId, uid]);
+    dispatch(fetchDayMenus(uid, da, days));
+  }, [dispatch, uid, da]);
 
   useEffect(() => {
     setLeft(dayMenu);

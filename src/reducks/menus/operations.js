@@ -4,19 +4,18 @@ import { push } from "connected-react-router";
 
 const usersRef = db.collection("users");
 
-export const fetchDayMenus = (uid, dateId, date) => {
-  const id = String(dateId);
+export const fetchDayMenus = (uid, dateId, days) => {
   return async (dispatch) => {
-    const snapshot = usersRef
+    const snapshot = await usersRef
       .doc(uid)
       .collection("dayMenus")
-      .doc(id)
+      .doc(dateId)
       .get()
 
         if (!snapshot.exists) {
           dispatch(
             emptyMenusAction({
-              date: date,
+              date: days,
             })
           );
         } else {
@@ -25,9 +24,9 @@ export const fetchDayMenus = (uid, dateId, date) => {
           dispatch(fetchDayMenusAction(data));
         }
 
-      snapshot.catch((error) => {
-        throw Error(error);
-      });
+      // snapshot.catch((error) => {
+      //   throw Error(error);
+      // });
   };
 };
 

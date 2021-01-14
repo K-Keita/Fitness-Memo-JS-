@@ -61,6 +61,7 @@ const Header = () => {
           {"Fitness-Memo"}
         </h2>
         {isSignedIn && (
+          <>
           <Button
             className={classes.primary}
             href="#outlined-buttons"
@@ -69,6 +70,7 @@ const Header = () => {
           >
             ログアウト
           </Button>
+          </>
         )}
       </div>
       <Divider style={{ margin: "0 auto", width: "95%" }} />
