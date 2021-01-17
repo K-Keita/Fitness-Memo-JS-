@@ -1,13 +1,14 @@
 import React from "react";
+import styles from '../../styles/UIkit/ListTitle.module.scss';
 
 const LeftPaperTitle = (props) => {
   return (
     <div>
-      <span className="day-change" onClick={props.prevdays}>
+      <span className={styles.b_change} onClick={props.prevDays}>
         &lt;
       </span>
       {props.label}
-      <span className="day-change" onClick={props.nextdays}>
+      <span className={styles.b_change} onClick={props.nextDays}>
         &gt;
       </span>
     </div>

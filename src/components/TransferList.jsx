@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { getFitnessMenu, getUserId } from "../reducks/users/selectors";
-import { getOnedayMenu } from "../reducks/menus/selectors";
+import { getDateMenu } from "../reducks/menus/selectors";
 import { LeftPaperTitle, ListPaper } from "../components/index";
 import { makeStyles } from "@material-ui/core/styles";
 import { saveDayMenus, fetchDayMenus } from "../reducks/menus/operations";
 import { SecondButton } from "../components/UIkit/index";
 import { useDispatch, useSelector } from "react-redux";
+import styles from '../styles/UIkit/TransferList.module.scss'
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -43,33 +44,32 @@ const intersection = (a, b) => {
   return a.filter((value) => b.indexOf(value) !== -1);
 };
 
-
 const TransferList = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const selector = useSelector((state) => state);
 
-  const dayMenu = getOnedayMenu(selector),
-  partsMenu = getFitnessMenu(selector),
-  uid = getUserId(selector);
+  const dayMenu = getDateMenu(selector),
+    partsMenu = getFitnessMenu(selector),
+    uid = getUserId(selector);
 
   //日付の変更
 
   const [checked, setChecked] = useState([]),
-  [left, setLeft] = useState([]),
-  [right, setRight] = useState([]),
-  [da, setDa] = useState(dateId),
-  [dateTitle, setDateTitle] = useState(titleDay),
-  [isRegist, setIsRegist] = useState(false);
+    [left, setLeft] = useState([]),
+    [right, setRight] = useState([]),
+    [da, setDa] = useState(dateId),
+    [dateTitle, setDateTitle] = useState(titleDay),
+    [isRegist, setIsRegist] = useState(false);
 
   const leftChecked = intersection(checked, left);
   const rightChecked = intersection(checked, right);
 
   const id = String(props.id);
 
-  const addClass = !isRegist ? "sign-box" : "sign-box color_clicked";
-  const leftClick = leftChecked.length === 0 ? "" : "color_clicked";
-  const rightClick = rightChecked.length === 0 ? "" : "color_clicked";
+  const addClass = !isRegist ? styles.registration_button : styles.registration_button__clicked;
+  const leftClick = leftChecked.length === 0 ? "" : styles.color__clicked;
+  const rightClick = rightChecked.length === 0 ? "" : styles.color__clicked;
 
   const changeDay = () => {
     year = days.getFullYear();
@@ -78,11 +78,11 @@ const TransferList = (props) => {
     date = `${year}/${month}/${day}`;
     dateId = String(year) + String(month) + String(day);
     titleDay = `${month}/${day}`;
-    setDa(dateId)
+    setDa(dateId);
   };
 
   //日付を一日前
-  const prevdays = () => {
+  const prevDays = () => {
     days = new Date(days.getFullYear(), days.getMonth(), days.getDate() - 1);
 
     changeDay();
@@ -90,7 +90,7 @@ const TransferList = (props) => {
   };
 
   //日付を一日後
-  const nextdays = () => {
+  const nextDays = () => {
     if (dateId === nowDateId) {
       return false;
     }
@@ -156,7 +156,7 @@ const TransferList = (props) => {
 
   return (
     <>
-      <div className="transfer-container">
+      <div className={styles.transfer_container}>
         <Grid
           alignItems="center"
           container
@@ -205,14 +205,14 @@ const TransferList = (props) => {
                 title={
                   <LeftPaperTitle
                     label={dateTitle}
-                    prevdays={prevdays}
-                    nextdays={nextdays}
+                    prevDays={prevDays}
+                    nextDays={nextDays}
                   />
                 }
               />
             </Paper>
           </Grid>
-        </Grid>
+              </Grid>
       </div>
       <div className={addClass}>
         <SecondButton

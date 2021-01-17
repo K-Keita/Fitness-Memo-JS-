@@ -8,25 +8,25 @@ import { PartsButton } from "../components/UIkit/index";
 const EditMenuList = () => {
   return (
     <>
-      <div className="d-flex">
+      <div className="flex">
         <PartsButton label={"ホームに戻る"} path={"/"} />
       </div>
       <LinkContainer
-        icons={<EditIcon className={"icons-align"} />}
+        icons={<EditIcon className="icon_align" />}
         label={"メニューリストの編集"}
         link={"/edit"}
         arr={true}
       />
       <EditList />
-      <div className="midium-space" />
+      <div className="medium-space" />
       <LinkContainer
-        icons={<AddCircleOutlineIcon className={"icons-align"} />}
+        icons={<AddCircleOutlineIcon className="icon_align" />}
         label={"トレーニングメニューを登録"}
         link={"/regist"}
         arr={true}
       />
       <LinkContainer
-        icons={<ListAltIcon className={"iconst-align"} />}
+        icons={<ListAltIcon className="icon_align" />}
         label={"過去のトレーニング"}
         link={"/list"}
         buttonLabel={"見る"}

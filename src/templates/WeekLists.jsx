@@ -2,7 +2,7 @@ import React from "react";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import EditIcon from "@material-ui/icons/Edit";
 import ListAltIcon from "@material-ui/icons/ListAlt";
-import { LinkContainer, OnedayList } from "../components/index";
+import { LinkContainer, DateList } from "../components/index";
 import { LinkContainerTop, PartsButton } from "../components/UIkit/index";
 
 const d = new Date();
@@ -23,28 +23,28 @@ for (let i = 0; i < 7; i++) {
 const WeekLists = () => {
   return (
     <>
-      <div className="d-flex">
+      <div className="flex">
         <PartsButton label={"ホームに戻る"} path={"/"} />
       </div>
       <LinkContainerTop
-        icons={<ListAltIcon className="icons-align" />}
+        icons={<ListAltIcon className="icon_align" />}
         label={"過去のトレーニング"}
       />
-      <div className="large-width d-flex_between">
+      <div className="flex_between">
         {daysList.map((days, index) => {
           return (
-            <OnedayList key={String(index)} title={days.day} dateId={days.id} />
+            <DateList key={String(index)} title={days.day} dateId={days.id} />
           );
         })}
       </div>
       <LinkContainer
-        icons={<AddCircleOutlineIcon className="icons-align" />}
+        icons={<AddCircleOutlineIcon className="icon_align" />}
         label={"トレーニングメニューを登録"}
         link={"/regist"}
         arr={true}
       />
       <LinkContainer
-        icons={<EditIcon className="icons-align" />}
+        icons={<EditIcon className="icon_align" />}
         label={"メニューリストを編集"}
         link={"/edit"}
         arr={true}

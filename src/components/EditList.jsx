@@ -5,12 +5,13 @@ import { InputText, SecondButton } from "../components/UIkit/index";
 import { ListPaper } from "../components";
 import { saveMenus } from "../reducks/users/operations";
 import { useDispatch, useSelector } from "react-redux";
+import styles from "../styles/editList/EditList.module.scss";
 
 const EditList = () => {
   const [checked, setChecked] = useState([]),
     [fitMemo, setFitMemo] = useState([]),
     [scrollLine, setScrollLine] = useState(false),
-    [value, setvalue] = useState("");
+    [value, setValue] = useState("");
 
   const dispatch = useDispatch();
   const selector = useSelector((state) => state);
@@ -23,11 +24,11 @@ const EditList = () => {
   }
 
   const selectItems = checked.length === 0;
-  const classes = selectItems ? "sign-box" : "sign-box color_clicked";
-  const isEmpty = value === "" ? "b-position" : "b-position color_clicked";
+  const classes = selectItems ? styles.b_delete : styles.b_delete__clicked;
+  const isEmpty = value === "" ? styles.b_add : styles.b_add__clicked;
 
-  const inputvalue = (event) => {
-    setvalue(event.target.value);
+  const inputValue = (event) => {
+    setValue(event.target.value);
   };
 
   const handleToggle = (value) => () => {
@@ -60,8 +61,8 @@ const EditList = () => {
         dispatch(saveMenus(uid, id, items));
         setFitMemo(items);
       });
-    const newchecked = [];
-    setChecked(newchecked);
+    const newChecked = [];
+    setChecked(newChecked);
   };
 
   const addMenu = (item, value) => {
@@ -76,7 +77,7 @@ const EditList = () => {
     const newMenu = [...item, newItem];
 
     setFitMemo(newMenu);
-    setvalue("");
+    setValue("");
     setScrollLine(!scrollLine);
     dispatch(saveMenus(uid, id, newMenu));
   };
@@ -113,11 +114,11 @@ const EditList = () => {
           }}
         />
       </div>
-      <div className="input-center d-flex_between">
+      <div className={styles.input_center}>
         <InputText
           fullWidth={true}
           label={"新規メニュー"}
-          onChange={inputvalue}
+          onChange={inputValue}
           type={"text"}
           value={value}
           width={"260px"}

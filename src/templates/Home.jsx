@@ -1,9 +1,10 @@
 import React from "react";
-import { OnedayList, TableBox } from "../components/index";
+import { DateList, TableBox } from "../components/index";
 import { LinkContainer } from "../components/index";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import EditIcon from "@material-ui/icons/Edit";
 import ListAltIcon from "@material-ui/icons/ListAlt";
+import styles from "..//styles/home/Home.module.scss";
 
 const d = new Date();
 const year = d.getFullYear();
@@ -15,28 +16,28 @@ const Home = () => {
   return (
     <>
       <div style={{ height: 20 }} />
-      <div className="d-flex_between">
-        <div className="table-container">
+      <div className={styles.flex_between}>
+        <div className={styles.table_container}>
           <TableBox />
         </div>
-        <div className="list-container">
-          <OnedayList title={"今日のトレーニング"} dateId={dateId} />
+        <div className={styles.list_container}>
+          <DateList title={"今日のトレーニング"} dateId={dateId} />
         </div>
       </div>
       <LinkContainer
-        icons={<AddCircleOutlineIcon className="icons-align" />}
+        icons={<AddCircleOutlineIcon className="icon_align" />}
         label={"トレーニングメニューを登録"}
         link={"/regist"}
         arr={true}
       />
       <LinkContainer
-        icons={<EditIcon className="icons-align" />}
+        icons={<EditIcon className="icon_align" />}
         label={"メニューリストの編集"}
         link={"/edit"}
         arr={true}
       />
       <LinkContainer
-        icons={<ListAltIcon className="icons-align" />}
+        icons={<ListAltIcon className="icon_align" />}
         label={"過去のトレーニング"}
         buttonLabel={"見る"}
         link={"/list"}

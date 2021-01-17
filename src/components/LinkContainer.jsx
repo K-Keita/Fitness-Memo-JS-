@@ -30,7 +30,7 @@ const LinkContainer = (props) => {
   return (
     <>
       <LinkContainerTop icons={props.icons} label={props.label} />
-      <div className="d-flex">{box}</div>
+      <div style={{display: "flex"}}>{box}</div>
     </>
   );
 };

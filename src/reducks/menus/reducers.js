@@ -20,7 +20,7 @@ export const MenuReducer = (state = initialState.menu, action) => {
 
 export const MenusReducer = (state = initialState.menus, action) => {
   switch (action.type) {
-    case Actions.FETCH_NEARMENUS:
+    case Actions.FETCH_CLOSEMENUS:
       return {
         ...state,
         list: [...action.payload],

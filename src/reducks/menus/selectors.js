@@ -3,12 +3,12 @@ import { createSelector } from "reselect";
 const menuSelector = (state) => state.menu;
 const menusSelector = (state) => state.menus;
 
-export const getNearDate = createSelector(
+export const getCloseDate = createSelector(
   [menuSelector],
   (state) => state.date
 );
 
-export const getOnedayMenu = createSelector(
+export const getDateMenu = createSelector(
   [menuSelector],
   (state) => state.fitItems
 );

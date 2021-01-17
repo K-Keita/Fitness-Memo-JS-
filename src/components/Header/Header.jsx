@@ -57,19 +57,19 @@ const Header = () => {
     <div className={classes.headPosition}>
       <div className={classes.root}>
         <h2 className={classes.title}>
-          <HomeOutlinedIcon fontSize="large" className="icons-align" />
+          <HomeOutlinedIcon fontSize="large" className="icon_align" />
           {"Fitness-Memo"}
         </h2>
         {isSignedIn && (
           <>
-          <Button
-            className={classes.primary}
-            href="#outlined-buttons"
-            onClick={() => dispatch(signOut())}
-            variant="outlined"
-          >
-            ログアウト
-          </Button>
+            <Button
+              className={classes.primary}
+              href="#outlined-buttons"
+              onClick={() => dispatch(signOut())}
+              variant="outlined"
+            >
+              ログアウト
+            </Button>
           </>
         )}
       </div>

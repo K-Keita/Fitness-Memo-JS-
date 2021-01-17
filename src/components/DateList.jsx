@@ -4,7 +4,7 @@ import { db } from "../firebase";
 import { ListPaper } from "./index";
 import { getUserId } from "../reducks/users/selectors";
 
-const OnedayList = (props) => {
+const DateList = (props) => {
   const [checked, setChecked] = useState([0]),
     [menuList, setMenuList] = useState([]);
 
@@ -33,12 +33,12 @@ const OnedayList = (props) => {
       .get()
       .then((snapshot) => {
         if (!snapshot.exists) {
-          setMenuList([{ name: "TRANING-OFF" }]);
+          setMenuList([{ name: "Training-OFF" }]);
         } else {
           const data = snapshot.data();
 
           if (data.fitItems.length === 0) {
-            setMenuList([{ name: "TRANING-OFF" }]);
+            setMenuList([{ name: "Training-OFF" }]);
           } else {
             data.fitItems.map((value, index) => {
               return (value.name = `${index + 1}:　${value.name}`);
@@ -64,4 +64,4 @@ const OnedayList = (props) => {
   );
 };
 
-export default OnedayList;
+export default DateList;

@@ -8,6 +8,7 @@ import {
 import FiberManualRecordOutlinedIcon from "@material-ui/icons/FiberManualRecordOutlined";
 import { LinkContainer } from "../components/index";
 import { anonymousSignIn } from "../reducks/users/operations";
+import styles from "../styles/auth/auth.module.scss";
 
 const TestUserSign = () => {
   const [username, setUsername] = useState("");
@@ -15,7 +16,7 @@ const TestUserSign = () => {
   const dispatch = useDispatch();
 
   const fillIn = username !== "";
-  const addClass = fillIn ? "b-center color_clicked" : "b-center";
+  const addClass = fillIn ? styles.sign_button__clicked : styles.sign_button;
   const icon = <FiberManualRecordOutlinedIcon style={{ height: 20 }} />;
 
   const inputUsername = useCallback(
@@ -27,9 +28,9 @@ const TestUserSign = () => {
 
   return (
     <>
-      <div className="sign-container">
+      <div className={styles.sign_container}>
         <LinkContainerTop label={"テストユーザーログイン"} icons={icon} />
-        <div className={"sign-box sign-border"}>
+        <div className={styles.sign_box}>
           <InputText
             label={"ユーザー名"}
             fullWidth={true}

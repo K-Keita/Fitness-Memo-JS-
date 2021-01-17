@@ -14,25 +14,25 @@ const RegistrationList = () => {
 
   return (
     <>
-      <div className="d-flex">
+      <div className="flex">
         <PartsButton label={"ホームに戻る"} path={"/"} />
       </div>
       <LinkContainer
-        icons={<AddCircleOutlineIcon className="icons-align" />}
+        icons={<AddCircleOutlineIcon className="icon_align" />}
         label={"トレーニングメニューを登録"}
         link={"/regist"}
         arr={true}
       />
       <TransferList id={id} />
-      <div className="midium-space" />
+      <div className="medium-space" />
       <LinkContainer
-        icons={<EditIcon className="icons-align" />}
+        icons={<EditIcon className="icon_align" />}
         label={"メニューリストの編集"}
         link={"/edit"}
         arr={true}
       />
       <LinkContainer
-        icons={<ListAltIcon className="icons-align" />}
+        icons={<ListAltIcon className="icon_align" />}
         label={"過去のトレーニングリスト"}
         link={"/list"}
         buttonLabel={"見る"}

@@ -6,10 +6,10 @@ export const fetchDayMenusAction = (menu) => {
   };
 };
 
-export const FETCH_NEARMENUS = "FETCH_NEARMENUS";
-export const fetchNearMenusAction = (menus) => {
+export const FETCH_CLOSEMENUS = "FETCH_CLOSEMENUS";
+export const fetchCloseMenusAction = (menus) => {
   return {
-    type: "FETCH_NEARMENUS",
+    type: "FETCH_CLOSEMENUS",
     payload: menus,
   };
 };

@@ -41,7 +41,7 @@ const useStyles = makeStyles({
 const ListPaper = React.memo((props) => {
   const classes = useStyles();
 
-  const check = props.check ? "block" : "d-none";
+  const check = props.check ? {display: "block"} : {display: "none"};
   const text = props.check ? "" : classes.text;
 
   return (
@@ -49,7 +49,7 @@ const ListPaper = React.memo((props) => {
       <CardHeader className={classes.cardHeader} title={props.title} />
       <List className={classes.list}>
         {props.items.map((value, index) => {
-          const labelId = `checkbox-list-label-${value}`;
+          const labelId = `label-${value}`;
           const colorBox = props.box
             ? `color-box color_${value.part}`
             : `color-box color_${props.title}`;
@@ -63,7 +63,7 @@ const ListPaper = React.memo((props) => {
                 key={value}
                 onClick={props.handleToggle(value)}
               >
-                <div className={check}>
+                <div style={check}>
                   <Checkbox
                     checked={props.checked.indexOf(value) !== -1}
                     disableRipple
